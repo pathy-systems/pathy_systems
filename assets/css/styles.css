@@ -1,0 +1,131 @@
+:root {
+    --primary-white: #ffffff;
+    --secondary-white: #d1d1d1;
+    --tertiary-white: #e7e7e7;
+
+
+    --primary-black: #0f0f0f;
+    --secondary-black: #2c2c2c;
+    --tertiary-black: #3a3a3a;
+
+    --primary-gray: #bbb6b6;
+    --secondary-gray: #524d4d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    scrollbar-width: none;
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+body {
+    background: var(--primary-black);
+    user-select: none;
+    overflow: hidden;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+
+.sections {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    z-index: 2;
+
+}
+
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+    z-index: 2;
+}
+
+
+/* =====================CONFIGURAÇÕES DO HEADER===================== */
+
+header {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: calc(100% - 4rem);
+    margin: 0;
+    padding: 1.5rem 3rem;
+    background-color: var(--secondary-black);
+    border-radius: 5rem;
+    border: 4px solid var(--tertiary-black);
+    box-shadow: 0 0 0 0 var(--tertiary-black);
+    transition: all 0.5s ease-in-out;
+    z-index: 10;
+}
+
+header:hover {
+    transform: scale(1.02) translateX(-50%);
+    box-shadow: 0 0 0 5px var(--tertiary-black);
+}
+
+header img {
+    max-width: 100%;
+    height: 30px;
+}
+
+header img {
+    max-width: 100%;
+    height: 30px;
+}
+
+header span {
+    color: var(--primary-gray);
+    font-family: 'font2';
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+    transition: all 0.3s ease-in-out;
+}
+
+header span:hover {
+    color: var(--primary-white);
+    background-color: var(--secondary-gray);
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+}
+
+.container-icons i {
+    color: var(--primary-white);
+}
+
+.container-icons i:hover {
+    color: var(--primary-white);
+    transform: scale(1.05);
+}
+
+/* ================================================================= */

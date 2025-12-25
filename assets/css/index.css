@@ -1,0 +1,589 @@
+/* =========================HOME==================================== */
+
+#particles {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#home {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#home h1 {
+    display: flex;
+    justify-content: flex-start;
+    font-family: "Castoro Titling";
+    color: var(--primary-white);
+    text-transform: uppercase;
+    font-size: 5rem;
+    margin: 0 0 0 12rem;
+}
+
+#home h2 {
+    display: flex;
+    justify-content: flex-start;
+    font-family: font2;
+    color: var(--primary-white);
+    font-size: 1.2rem;
+    margin-left: 12.5rem;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+}
+
+.container-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin: 2rem 0 0 12.5rem;
+    color: var(--primary-white);
+    font-size: 2rem;
+    background-color: var(--secondary-black);
+    padding: 1rem 2rem;
+    width: fit-content;
+    border-radius: 2rem;
+    border: 3px solid var(--tertiary-black);
+    box-shadow: 0 0 0 0 var(--tertiary-black);
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.container-icons:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 5px var(--tertiary-black);
+}
+
+.container-icons i {
+    filter: brightness(0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+.container-icons i:hover {
+    filter: brightness(1);
+}
+
+.container-icons .bi-instagram:hover {
+    color: #E1306C;
+}
+
+.container-icons .bi-whatsapp:hover {
+    color: #25D366;
+}
+
+
+.container-icons .bi-telephone-plus-fill:hover {
+    color: #34b7f1;
+}
+
+.container-icons .bi-envelope-arrow-up-fill:hover {
+    color: #D44638;
+}
+
+.btn-home {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary-white);
+    border: 3px solid var(--primary-white);
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-home:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 0 5px var(--primary-white);
+}
+
+.btn-home i {
+    color: var(--primary-black);
+    font-size: 1.5rem;
+}
+
+/* ============================================================================================================================================ */
+
+#servicos {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: var(--tertiary-white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#particles-servicos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.floating-icon {
+    position: absolute;
+    bottom: -50px;
+    /* Começa fora da tela, embaixo */
+    color: var(--primary-black);
+    /* Usa sua cor padrão */
+    opacity: 1;
+    /* BEM transparente para ser sutil */
+    animation: floatUp linear infinite;
+}
+
+#servicos h2 {
+    font-family: 'font2';
+    color: var(--primary-black);
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 7rem auto 0 12.5rem;
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+
+}
+
+#servicos span {
+    color: var(--primary-black);
+    font-size: 1.28rem;
+    text-transform: lowercase;
+    letter-spacing: .5px;
+    margin: 0 auto 0 12.5rem;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    width: 60vw;
+    font-family: 'font3';
+    opacity: 0.8;
+    font-weight: bold;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem auto 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card {
+    background-color: var(--secondary-white);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    text-align: start;
+}
+
+.service-card h3 {
+    font-family: 'font3';
+    color: var(--primary-black);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin: .5rem 0 .5rem 0;
+}
+
+.service-card p {
+    font-family: 'font3';
+    color: var(--primary-black);
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .5;
+        /* Aparece suavemente */
+    }
+
+    90% {
+        opacity: 1;
+        /* Mantém visível */
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        /* Sobe mais que a altura da tela */
+        opacity: 0;
+    }
+}
+
+/* =========================================================================================================================================== */
+
+#portfolio {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-black);
+
+}
+
+#portfolio h3 {
+    font-family: 'font2';
+    color: var(--primary-white);
+    font-size: 8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+#portfolio span {
+    color: var(--primary-white);
+    font-size: 1.5rem;
+    text-transform: lowercase;
+    letter-spacing: .5px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    width: 60vw;
+    font-family: 'font3';
+    opacity: 0.8;
+    font-weight: bold;
+}
+
+.btn-portfolio {
+    margin-top: 2rem;
+    background-color: var(--secondary-white);
+    border: 3px solid var(--primary-white);
+    border-radius: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-family: 'font2';
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--primary-black);
+    transition: all 0.5s ease-in-out;
+    border-radius: 50%;
+    position: relative; /* necessário para o pseudo-elemento */
+    overflow: visible;
+}
+
+.btn-portfolio:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px var(--primary-white);
+}
+
+/* Linha animada movida para .btn-project */
+
+.btn-portfolio i {
+    font-size: 1.5rem;
+}
+
+/* falling arrows effect appended to #portfolio when button is hovered */
+.falling-arrow {
+    position: absolute;
+    top: -40px;
+    color: rgba(255, 255, 255, 0.95);
+    pointer-events: none;
+    z-index: 5;
+    animation-name: fallDown;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+    transform: translateY(0) rotate(0deg);
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* ============================================================================================================================== */
+
+#project1 {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--primary-black);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#project1 h3 {
+    font-family: 'font2';
+    color: var(--primary-white);
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    text-align: center;
+}
+
+#project1 p {
+    color: var(--primary-white);
+    font-size: 1.28rem;
+    text-transform: lowercase;
+    letter-spacing: .5px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    font-family: 'font3';
+    opacity: 0.8;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0 0 0;
+}
+
+.project-info {
+    margin: 0 4rem 0 0;
+}
+
+.project-info .tech-cards {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    font-family: font3;
+    margin: 2rem 0 0 2rem;
+}
+
+.tech-cards span {
+    background-color: var(--secondary-white);
+    color: var(--primary-black);
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.project-info button.btn-project {
+    margin: 1rem 0 0 0;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-family: 'font3';
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--primary-white);
+    transition: all 0.5s ease-in-out;
+    background-color: transparent;
+    border: none;
+    position: relative; /* necessário para a linha */
+    overflow: visible;
+
+}
+
+.project-info button.btn-project::after {
+    content: "";
+    position: absolute;
+    left: 2rem; /* linha começa na esquerda do botão */
+    bottom: 0; /* distância abaixo do botão */
+    width: 65%; /* pega toda a largura do botão */
+    height: 3px; /* espessura da linha */
+    background: var(--primary-white);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left; /* animação começa pela esquerda */
+    transition: transform 0.35s ease;
+}
+
+.project-info button.btn-project:hover {
+    transform: scale(1.05);
+}
+
+.project-info button.btn-project:hover::after {
+    transform: scaleX(1);
+}
+
+.project-mockup {
+    display: flex;
+    flex-direction: column; /* coloca a imagem e os controles em coluna */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* mockup sizes */
+.project-mockup img.mockup {
+    transition: opacity 0.35s ease-in-out, transform 0.45s ease-in-out;
+    opacity: 1;
+    border: 8px solid var(--tertiary-black);
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+}
+
+.project-mockup img.mockup.desktop {
+    width: 40vw;
+}
+
+.project-mockup img.mockup.tablet {
+    margin-top: 4rem;
+    height: 65vh;
+}
+
+.project-mockup img.mockup.mobile {
+    border-radius: 1.2rem;
+}
+
+/* mockup control buttons */
+.mockup-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0 0 0; /* centraliza abaixo da imagem */
+    justify-content: center;
+}
+
+.mockup-btn {
+    background: transparent;
+    border: 2px solid var(--secondary-white);
+    color: var(--primary-white);
+    padding: 0.5rem 0.8rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: 'font3';
+    transition: all 0.25s ease;
+}
+
+.mockup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.mockup-btn.active {
+    background: var(--secondary-white);
+    color: var(--primary-black);
+    border-color: var(--secondary-white);
+}
+
+.project-mockup img.mockup.mobile {
+    width: auto;
+    height: 60vh;
+    border: 8px solid var(--tertiary-black);
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    margin: 3rem 0 0 0;
+}
+
+
+.up-right-icon {
+    position: fixed;
+    left: 2%;
+    bottom: 2%;
+    color: var(--primary-white);
+    pointer-events: none;
+    z-index: 2;
+    animation-name: moveUpRight;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+@keyframes moveUpRight {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        /* maior deslocamento para garantir que os ícones atravessem a viewport independentemente do ponto inicial */
+        transform: translate(140vw, -140vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+#project2 {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--primary-black);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#project2 h3 {
+    font-family: 'font2';
+    color: var(--primary-white);
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    text-align: center;
+}
+
+#project2 p {
+    color: var(--primary-white);
+    font-size: 1.28rem;
+    text-transform: lowercase;
+    letter-spacing: .5px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    font-family: 'font3';
+    opacity: 0.8;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0 0 0;
+}
