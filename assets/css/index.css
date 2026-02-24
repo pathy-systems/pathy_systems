@@ -1109,6 +1109,20 @@ button.btn-project:hover::after {
         width: 90vw;
     }
 
+    /* Portfolio */
+
+    #portfolio h3 {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+
+    #portfolio span {
+        width: 90vw;
+        text-align: center;
+    }
+
+     /* Project 1 */
+
 
 
 }
