@@ -86,10 +86,6 @@
     color: #34b7f1;
 }
 
-.container-icons .bi-envelope-arrow-up-fill:hover {
-    color: #D44638;
-}
-
 .btn-home {
     position: absolute;
     bottom: 2rem;
@@ -166,7 +162,6 @@
 #servicos span {
     color: var(--primary-black);
     font-size: 1.28rem;
-    text-transform: lowercase;
     letter-spacing: .5px;
     margin: 0 auto 0 12.5rem;
     display: flex;
@@ -210,7 +205,7 @@
 .service-card p {
     font-family: 'font3';
     color: var(--primary-black);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     line-height: 1.5;
     opacity: 0.8;
@@ -270,7 +265,6 @@
 #portfolio span {
     color: var(--primary-white);
     font-size: 1.5rem;
-    text-transform: lowercase;
     letter-spacing: .5px;
     display: flex;
     justify-content: center;
@@ -294,7 +288,8 @@
     color: var(--primary-black);
     transition: all 0.5s ease-in-out;
     border-radius: 50%;
-    position: relative; /* necessário para o pseudo-elemento */
+    position: relative;
+    /* necessário para o pseudo-elemento */
     overflow: visible;
 }
 
@@ -343,8 +338,10 @@
 /* ============================================================================================================================== */
 
 #project1 {
-    height: 100vh;
+    min-height: 100vh;
+    /* reduzido de 100vh */
     width: 100vw;
+    padding: 4rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: var(--primary-black);
@@ -371,7 +368,6 @@
 #project1 p {
     color: var(--primary-white);
     font-size: 1.28rem;
-    text-transform: lowercase;
     letter-spacing: .5px;
     display: flex;
     justify-content: center;
@@ -387,7 +383,7 @@
     margin: 0 4rem 0 0;
 }
 
-.project-info .tech-cards {
+.tech-cards {
     display: flex;
     gap: 1rem;
     margin-top: 1.5rem;
@@ -405,7 +401,7 @@
     text-transform: uppercase;
 }
 
-.project-info button.btn-project {
+button.btn-project {
     margin: 1rem 0 0 0;
     border-radius: 2rem;
     padding: 1rem 2rem;
@@ -417,36 +413,43 @@
     transition: all 0.5s ease-in-out;
     background-color: transparent;
     border: none;
-    position: relative; /* necessário para a linha */
+    position: relative;
+    /* necessário para a linha */
     overflow: visible;
 
 }
 
-.project-info button.btn-project::after {
+button.btn-project::after {
     content: "";
     position: absolute;
-    left: 2rem; /* linha começa na esquerda do botão */
-    bottom: 0; /* distância abaixo do botão */
-    width: 65%; /* pega toda a largura do botão */
-    height: 3px; /* espessura da linha */
+    left: 2rem;
+    /* linha começa na esquerda do botão */
+    bottom: 0;
+    /* distância abaixo do botão */
+    width: 65%;
+    /* pega toda a largura do botão */
+    height: 3px;
+    /* espessura da linha */
     background: var(--primary-white);
     border-radius: 2px;
     transform: scaleX(0);
-    transform-origin: left; /* animação começa pela esquerda */
+    transform-origin: left;
+    /* animação começa pela esquerda */
     transition: transform 0.35s ease;
 }
 
-.project-info button.btn-project:hover {
+button.btn-project:hover {
     transform: scale(1.05);
 }
 
-.project-info button.btn-project:hover::after {
+button.btn-project:hover::after {
     transform: scaleX(1);
 }
 
 .project-mockup {
     display: flex;
-    flex-direction: column; /* coloca a imagem e os controles em coluna */
+    flex-direction: column;
+    /* coloca a imagem e os controles em coluna */
     justify-content: center;
     align-items: center;
     position: relative;
@@ -461,6 +464,33 @@
     border-radius: 1rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     max-width: 90%;
+}
+
+/* Layout change: não exibimos imagem inicial — a imagem será criada ao clicar em um botão */
+.project-mockup {
+    min-height: 4.2rem;
+    /* garante espaço para os botões */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Destaque dos botões quando não há imagem */
+.mockup-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0.8rem 0 0 0;
+    justify-content: center;
+}
+
+.mockup-btn {
+    padding: 0.65rem 1rem;
+    font-size: 1.05rem;
+}
+
+.mockup-btn.active {
+    transform: scale(1.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .project-mockup img.mockup.desktop {
@@ -479,8 +509,9 @@
 /* mockup control buttons */
 .mockup-controls {
     display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0 0 0; /* centraliza abaixo da imagem */
+    gap: 0.75rem;
+    margin: 0.8rem 0 0 0;
+    /* centraliza abaixo da imagem */
     justify-content: center;
 }
 
@@ -488,7 +519,8 @@
     background: transparent;
     border: 2px solid var(--secondary-white);
     color: var(--primary-white);
-    padding: 0.5rem 0.8rem;
+    padding: 0.65rem 1rem;
+    font-size: 1.05rem;
     border-radius: 1rem;
     cursor: pointer;
     font-family: 'font3';
@@ -497,13 +529,15 @@
 
 .mockup-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .mockup-btn.active {
     background: var(--secondary-white);
     color: var(--primary-black);
     border-color: var(--secondary-white);
+    transform: scale(1.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .project-mockup img.mockup.mobile {
@@ -528,7 +562,7 @@
     animation-fill-mode: forwards;
     opacity: 0;
     transform: translate(0, 0) rotate(0deg);
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
 @keyframes moveUpRight {
@@ -536,9 +570,11 @@
         transform: translate(0, 0) rotate(0deg);
         opacity: 0;
     }
+
     10% {
         opacity: 1;
     }
+
     100% {
         /* maior deslocamento para garantir que os ícones atravessem a viewport independentemente do ponto inicial */
         transform: translate(140vw, -140vh) rotate(720deg);
@@ -548,8 +584,10 @@
 
 
 #project2 {
-    height: 100vh;
+    min-height: 70vh;
+    /* reduzido de 100vh */
     width: 100vw;
+    padding: 4rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: var(--primary-black);
@@ -576,7 +614,6 @@
 #project2 p {
     color: var(--primary-white);
     font-size: 1.28rem;
-    text-transform: lowercase;
     letter-spacing: .5px;
     display: flex;
     justify-content: center;
@@ -586,4 +623,492 @@
     font-weight: bold;
     text-align: center;
     margin: 1rem 0 0 0;
+}
+
+
+
+.project-info2 {
+    margin: 0 0 0 4rem;
+}
+
+/* Project 3 */
+
+#project3 {
+    min-height: 100vh;
+    /* reduzido de 100vh */
+    width: 100vw;
+    padding: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--primary-black);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#project3 h3 {
+    font-family: 'font2';
+    color: var(--primary-white);
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    text-align: center;
+}
+
+#project3 p {
+    color: var(--primary-white);
+    font-size: 1.28rem;
+    letter-spacing: .5px;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    font-family: 'font3';
+    opacity: 0.8;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0 0 0;
+}
+
+/* Ajuste específico: mockup desktop menor no Project 3 */
+#project3 .project-mockup img.mockup.desktop {
+    width: 30vw;
+    margin-top: 3rem;
+}
+
+/* Contato =================================================== */
+
+#contato {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: var(--tertiary-white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.contato-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-top: 4rem;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.24);
+    border-radius: 2rem;
+
+}
+
+/* LADO ESQUERDO SEÇÃO CONTATO  */
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    background: var(--secondary-white);
+    padding: 2rem;
+    border-radius: 2rem 0 0 2rem;
+    width: 80vh;
+    height: 70vh;
+
+}
+
+.info-header h4 {
+    font-family: 'font2';
+    color: var(--primary-black);
+    font-size: 2.2rem;
+    margin: 0;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.info-header p {
+    font-family: 'font3';
+    color: var(--primary-black);
+    font-size: 1.1rem;
+    opacity: 0.8;
+    font-weight: bold;
+    gap: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.info-content h5 {
+    font-family: 'font3';
+    color: var(--primary-black);
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    text-rendering: optimizeSpeed;
+}
+
+.info-content p {
+    font-family: 'font3';
+    color: var(--primary-black);
+    font-size: 1.1rem;
+    margin: 0;
+    opacity: 0.8;
+    font-weight: bold;
+    text-rendering: optimizeSpeed;
+
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .5rem;
+    border-bottom: 2px solid var(--tertiary-white);
+    width: 100%;
+    padding: .5rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.info-item i {
+    font-size: 1.2rem;
+    color: var(--primary-black);
+    margin-right: 0.3rem;
+}
+
+.info-item:hover {
+    transform: translateY(-3px);
+    background-color: rgba(0, 0, 0, 0.075);
+
+}
+
+/* PARTICLES - CONTATO: flutuação de ícones quando hover em info-item */
+#particles-contato {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.contact-floating-icon {
+    position: absolute;
+    color: var(--primary-black);
+    opacity: 1;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+
+/* Formulário de Contato */
+
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    background: var(--tertiary-black);
+    padding: 2rem;
+    border-radius: 0 2rem 2rem 0;
+    width: 80vh;
+    height: 70vh;
+}
+
+.form-header h4 {
+    font-family: 'font2';
+    color: var(--primary-white);
+    font-size: 2.2rem;
+    margin: 0;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto 0 auto;
+}
+
+.form-header p {
+    font-family: 'font3';
+    color: var(--primary-white);
+    font-size: 1.1rem;
+    opacity: 0.8;
+    font-weight: 600;
+    gap: 1rem;
+    text-align: center;
+    width: 100%;
+    padding-bottom: .5rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    font-family: 'font3';
+    font-size: 1rem;
+    resize: none;
+    background-color: var(--secondary-black);
+    border: none;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--primary-white);
+    opacity: 0.5;
+}
+
+.contact-form input:active,
+.contact-form textarea:active {
+    transform: scale(1.05);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    transform: scale(1.05);
+}
+
+.contact-form button {
+    background-color: var(--secondary-white);
+    color: var(--primary-black);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.8rem 1.5rem;
+    font-family: 'font3';
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background-color: var(--primary-white);
+    transform: scale(1.05);
+}
+
+@media (max-width:850px) {
+
+    #home h1 {
+        font-size: 5.5rem;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    #home h2 {
+        font-size: 1.5rem;
+        margin: 0 auto 0 auto;
+        padding: 0 1.5rem 0 1;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 80vw;
+    }
+
+    #servicos h2 {
+        font-size: 4rem;
+        margin: 0 auto 1rem auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #servicos span {
+        width: 80vw;
+        margin: 0 auto 0 auto;
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .services-container {
+        grid-template-columns: 1fr;
+        width: 80vw;
+    }
+
+    #portfolio h3 {
+        font-size: 6rem;
+    }
+
+    #portfolio span {
+        width: 80vw;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    #project1,
+    #project2,
+    #project3 {
+        grid-template-columns: 1fr;
+
+    }
+
+    .project-info {
+        margin: -2rem 0 0 0;
+        text-align: center;
+    }
+
+    .project-info2 {
+        margin: 0 0 -10rem 0;
+        text-align: center;
+    }
+
+    .project-mockup img.mockup.desktop {
+        width: 90vw;
+    }
+
+
+
+    .project-mockup img.mockup.tablet {
+        height: 50vh;
+        margin: 0 auto 0 auto;
+    }
+
+    .project-mockup img.mockup.mobile {
+        height: 50vh;
+        margin: 0 auto 0 auto;
+    }
+
+    .tech-cards {
+        justify-content: center;
+        margin: 1rem auto 0 auto;
+    }
+
+    #contato .contato-container {
+        grid-template-columns: 1fr;
+        width: 80vw;
+        height: auto;
+
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-left {
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .contact-right {
+        border-radius: 0 0 2rem 2rem;
+    }
+
+}
+
+@media (max-width:768px) {
+
+    header {
+        padding: 1rem 2rem;
+        width: calc(100% - 2rem);
+    }
+
+    .container-icons {
+        margin: 1rem auto 0 auto;
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        gap: 1rem;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    #home h1 {
+        font-size: 4rem;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #home h2 {
+        font-size: 1rem;
+        margin: 1rem auto 0 auto;
+    }
+
+    #servicos h2 {
+        font-size: 3rem;
+    }
+
+    #portfolio h3 {
+        font-size: 4rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-card h3 {
+        font-size: 1rem;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+    }
+
+}
+
+@media (max-width:390px) {
+
+    #servicos h2 {
+        font-size: 1.8rem;
+    }
+
+    #servicos span {
+        font-size: .8rem;
+        width: 90vw;
+    }
+
+    .services-container {
+        width: 90vw;
+        height: 40vh;
+        gap: 0.5rem;
+    }
+
+    .service-card {
+        width: 100%;
+        height: fit-content;
+    
+    }
+
+    /* Colocar o ícone ao lado do título apenas nesta resolução */
+    .service-card i {
+        font-size: 1rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 0.6rem;
+    }
+
+    .service-card h3 {
+        font-size: 0.7rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0; /* remove margens verticais para alinhamento */
+    }
+
+    .service-card p {
+        font-size: 0.7rem;
+    }
+
+     .project-mockup img.mockup.desktop {
+        width: 90vw;
+    }
+
+
+
 }

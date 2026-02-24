@@ -28,7 +28,7 @@
             <img src="assets/img/PS.svg" alt="Logo Pathy Systems">
         </a>
 
-        <nav>
+        <nav class="menu-desk">
             <ul>
                 <li>
                     <a href="index.html"><span>Home</span></a>
@@ -40,10 +40,14 @@
                     <a href="portfolio.html"><span>Portfólio</span></a>
                 </li>
                 <li>
-                    <a href="contato.html"><span>Contato</span></a>
+                    <a href="#contato"><span>Contato</span></a>
                 </li>
             </ul>
         </nav>
+
+        <div class="menu-mobile">
+            <i class="bi bi-list"></i>
+        </div>
     </header>
 
     <main>
@@ -53,15 +57,16 @@
                     <h1>Pathy Systems</h1>
                     <h2>Desenvolvemos soluções digitais que geram crescimento real para empresas.</h2>
                     <div class="container-icons">
-                        <a href="https://www.instagram.com/pathy_systems/"><i class="bi bi-instagram"></i></a>
-                        <a href="https://wa.me/5511971043603"><i class="bi bi-whatsapp"></i></a>
-                        <a href="https://github.com/PathySystems"><i class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://wa.me/5511971043603" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://github.com/pathy-systems" target="_blank"><i class="bi bi-github"></i></a>
                         <a href="tel:+5511987654321"><i class="bi bi-telephone-plus-fill"></i></a>
-                        <a href="mailto:contato@pathysystems.com.br"><i class="bi bi-envelope-arrow-up-fill"></i></a>
+                        <a href="https://www.tiktok.com/@pathy_systems" target="_blank"><i class="bi bi-tiktok"></i></a>
                     </div>
                 </div>
                 <button class="btn-home"><i class="bi bi-arrow-down"></i></button>
             </section>
+            
             <section id="servicos" class="section services">
                 <div id="particles-servicos"></div>
                 <h2>Nossos Serviços</h2>
@@ -109,14 +114,15 @@
             <section id="project1" class="section project1">
 
                 <div class="project-mockup">
-                    <img src="assets/img/portfolio/fm_site.png" alt="Projeto Desktop" class="mockup desktop">
+                    <!-- Imagem inicial removida: usaremos apenas botões para selecionar o mockup -->
                     <div class="mockup-controls">
-                        <button class="mockup-btn" data-src="assets/img/portfolio/fm_mobile.png" data-size="mobile">Mobile</button>
-                        <button class="mockup-btn active" data-src="assets/img/portfolio/fm_site.png" data-size="desktop">Desktop</button>
-                        <button class="mockup-btn" data-src="assets/img/portfolio/fm_tablet.png" data-size="tablet">Tablet</button>
+                        <button class="mockup-btn" data-src="assets/img/portfolio/fm_mobile.png"
+                            data-size="mobile">Mobile</button>
+                        <button class="mockup-btn active" data-src="assets/img/portfolio/fm_site.png"
+                            data-size="desktop">Desktop</button>
+                        <button class="mockup-btn" data-src="assets/img/portfolio/fm_tablet.png"
+                            data-size="tablet">Tablet</button>
                     </div>
-
-                   
 
                 </div>
 
@@ -145,14 +151,14 @@
 
             <section id="project2" class="section project2">
 
-                
-                <div class="project-info">
+
+                <div class="project-info2">
                     <h3>Projeto 01</h3>
                     <p>
                         Plataforma desenvolvida para apresentar serviços de forma clara,
                         moderna e responsiva.
                     </p>
-                    
+
                     <div class="tech-cards">
                         <span>HTML</span>
                         <span>CSS</span>
@@ -162,25 +168,135 @@
 
                     <a href="https://frutamina.github.io/final/" target="_blank">
                         <button class="btn-project"><span>ver projeto</span><i
-                            class="bi bi-arrow-up-right"></i></button>
-                        </a>
+                                class="bi bi-arrow-up-right"></i></button>
+                    </a>
+                </div>
+
+                <div class="project-mockup">
+                    <!-- Imagem inicial removida: usaremos apenas botões para selecionar o mockup -->
+                    <div class="mockup-controls">
+                        <button class="mockup-btn" data-src="assets/img/portfolio/cr_mobile.png"
+                            data-size="mobile">Mobile</button>
+                        <button class="mockup-btn active" data-src="assets/img/portfolio/cr_site.png"
+                            data-size="desktop">Desktop</button>
+                        <button class="mockup-btn" data-src="assets/img/portfolio/cr_tablet.png"
+                            data-size="tablet">Tablet</button>
                     </div>
-                    <div class="project-mockup">
-                        <img src="assets/img/portfolio/fm_site.png" alt="Projeto Desktop" class="mockup desktop">
-                        <div class="mockup-controls">
-                            <button class="mockup-btn" data-src="assets/img/portfolio/fm_mobile.png" data-size="mobile">Mobile</button>
-                            <button class="mockup-btn active" data-src="assets/img/portfolio/fm_site.png" data-size="desktop">Desktop</button>
-                            <button class="mockup-btn" data-src="assets/img/portfolio/fm_tablet.png" data-size="tablet">Tablet</button>
-                        </div>
-    
-                       
-    
-                    </div>
+
+                </div>
 
 
             </section>
 
+            <section id="project3" class="section project3">
 
+                <div class="project-mockup">
+
+                    <div class="mockup-controls">
+                        <button class="mockup-btn active" data-src="assets/img/portfolio/4.svg"
+                            data-size="mobile">Horizontal</button>
+                        <button class="mockup-btn" data-src="assets/img/portfolio/1.svg"
+                            data-size="tablet">Vertical</button>
+                    </div>
+
+                </div>
+
+                <div class="project-info">
+                    <h3>Projeto 01</h3>
+                    <p>
+                        Plataforma desenvolvida para apresentar serviços de forma clara,
+                        moderna e responsiva.
+                    </p>
+
+                    <div class="tech-cards">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+
+                    <a href="https://frutamina.github.io/final/" target="_blank">
+                        <button class="btn-project"><span>ver projeto</span><i
+                                class="bi bi-arrow-up-right"></i></button>
+                    </a>
+                </div>
+
+            </section>
+
+            <section id="contato" class="section contato">
+
+                <div id="particles-contato"></div>
+
+                <div class="contato-container">
+
+                    <div class="contact-left">
+                        <div class="info-header">
+                            <h4>Fale conosco</h4>
+                            <p>Nosso meios de contato</p>
+                        </div>
+                        <a href="tel:5511971043603" target="_blank">
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <h5><i class="bi bi-telephone"></i>Telefone</h5>
+                                    <p>(11) 97104-3603</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        
+                        <a href="https://wa.me/5511971043603" target="_blank">
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <h5><i class="bi bi-whatsapp"></i>Whatsapp</h5>
+                                    <p>(11) 97104-3603</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank">
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <h5><i class="bi bi-instagram"></i>Instagram</h5>
+                                    <p>@pathy_systems</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <div class="info-item">
+                            <div class="info-content">
+                                <h5><i class="bi bi-tiktok"></i>Tik Tok</h5>
+                                <p>@pathy_systems</p>
+                            </div>
+                        </div>
+                        
+                        <a href="mailto:pathysystems@gmail.com">
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <h5><i class="bi bi-envelope"></i>Email</h5>
+                                    <p>pathysystems@gmail.com
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-right">
+                        <div class="form-header">
+                            <h4>Envie uma mensagem</h4>
+                            <p>Estamos prontos para ajudar você</p>
+                        </div>
+                        
+                        <form action="#" method="post" class="contact-form">
+                            <input type="text" name="name" placeholder="Seu Nome" required>
+                            <input type="email" name="email" placeholder="Seu Email" required>
+                            <input type="tel" name="telefone" placeholder="Seu Telefone" required>
+                            <textarea name="message" rows="2" placeholder="Sua Mensagem" required></textarea>
+                            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    </div>
+
+
+                </div>
+            </section>
 
         </div>
 

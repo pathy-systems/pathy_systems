@@ -128,4 +128,21 @@ header span:hover {
     transform: scale(1.05);
 }
 
+.menu-mobile {
+    display: none;
+    font-size: 2rem;
+    color: var(--primary-white);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+   
+    .menu-desk {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+}
 /* ================================================================= */

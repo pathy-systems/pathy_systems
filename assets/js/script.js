@@ -3,9 +3,13 @@ console.log('script.js loaded');
 // Protege a execução do tsParticles caso a lib não carregue (evita que todo o script pare)
 if (typeof tsParticles !== 'undefined' && tsParticles && typeof tsParticles.load === 'function') {
     try {
+        // reduz a quantidade de partículas em telas pequenas (<=768px)
+        const isSmallScreen = window.matchMedia('(max-width:768px)').matches;
+        const particleCount = isSmallScreen ? 18 : 60;
+
         tsParticles.load("particles", {
             particles: {
-                number: { value: 60 },
+                number: { value: particleCount },
                 move: { enable: true, speed: 0.8 },
                 size: { value: 2 },
                 color: { value: "#ffffff" },
@@ -148,12 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // MOCKUP SWITCHER: aplica por seção (cada projeto tem seu próprio mockup e botões)
     document.querySelectorAll('.section').forEach(section => {
-        const mockupImg = section.querySelector('.project-mockup img.mockup');
+        let mockupImg = section.querySelector('.project-mockup img.mockup');
         const mockupBtns = section.querySelectorAll('.mockup-controls .mockup-btn');
+        const mockupControls = section.querySelector('.mockup-controls');
+        const projectMockup = section.querySelector('.project-mockup');
 
-        if (!mockupImg || !mockupBtns.length) return;
+        if (!mockupBtns.length) return;
 
-        // preload images for this section
+        // garante que pelo menos um botão esteja ativo por seção
+        if (![...mockupBtns].some(b => b.classList.contains('active'))) {
+            mockupBtns[0].classList.add('active');
+        }
+
+        // preload images (útil para quando o usuário clicar)
         mockupBtns.forEach(btn => {
             const src = btn.getAttribute('data-src');
             if (src) {
@@ -162,12 +173,86 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // cria ou carrega o mockup inicial baseado no botão ativo quando a seção entra em view
+        function ensureInitialMockup() {
+            const activeBtn = [...mockupBtns].find(b => b.classList.contains('active')) || mockupBtns[0];
+            if (!activeBtn) return;
+            const src = activeBtn.getAttribute('data-src');
+            const size = activeBtn.getAttribute('data-size');
+            if (!src) return;
+
+            if (!mockupImg) {
+                mockupImg = document.createElement('img');
+                mockupImg.className = 'mockup';
+                mockupImg.style.opacity = 0;
+                if (projectMockup && mockupControls) {
+                    projectMockup.insertBefore(mockupImg, mockupControls);
+                } else if (projectMockup) {
+                    projectMockup.appendChild(mockupImg);
+                }
+            }
+
+            const currentSrc = mockupImg.getAttribute('src');
+            if (currentSrc === src && mockupImg.classList.contains(size)) {
+                mockupImg.style.opacity = 1;
+                return;
+            }
+
+            const pre = new Image();
+            pre.onload = () => {
+                mockupImg.setAttribute('src', src);
+                mockupImg.classList.remove('mobile', 'desktop', 'tablet');
+                if (size) mockupImg.classList.add(size);
+                requestAnimationFrame(() => { mockupImg.style.opacity = 1; });
+            };
+            pre.onerror = () => {
+                console.warn('Erro ao carregar imagem inicial do mockup:', src);
+                mockupImg.setAttribute('src', src);
+                mockupImg.classList.remove('mobile', 'desktop', 'tablet');
+                if (size) mockupImg.classList.add(size);
+                requestAnimationFrame(() => { mockupImg.style.opacity = 1; });
+            };
+            pre.src = src;
+        }
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        ensureInitialMockup();
+                        io.unobserve(section);
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            io.observe(section);
+        } else {
+            // fallback imediato
+            ensureInitialMockup();
+        }
+
         let isSwitching = false;
 
         mockupBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                // atualiza classes active localmente
+                mockupBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
                 const src = btn.getAttribute('data-src');
                 const size = btn.getAttribute('data-size');
+
+                // se não há elemento <img> ainda, cria um dinamicamente
+                if (!mockupImg) {
+                    mockupImg = document.createElement('img');
+                    mockupImg.className = 'mockup';
+                    mockupImg.style.opacity = 0;
+                    if (projectMockup && mockupControls) {
+                        projectMockup.insertBefore(mockupImg, mockupControls);
+                    } else if (projectMockup) {
+                        projectMockup.appendChild(mockupImg);
+                    }
+                }
 
                 const currentSrc = mockupImg.getAttribute('src');
                 if (currentSrc === src && mockupImg.classList.contains(size)) return;
@@ -186,10 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     mockupImg.classList.remove('mobile', 'desktop', 'tablet');
                     mockupImg.classList.add(size);
 
-                    // only remove active from buttons in this section
-                    mockupBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
                     requestAnimationFrame(() => {
                         mockupImg.style.opacity = 1;
                     });
@@ -204,9 +285,91 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 pre.src = src;
 
+                // safety fallback
                 setTimeout(() => { finalize(); }, 2000);
             });
         });
+        
+        // CONTACT HOVER ICONS: cria ícones flutuantes no fundo de #contato ao passar o mouse sobre cada .info-item
+        const contactSection = document.getElementById('contato');
+        const particlesContato = document.getElementById('particles-contato');
+        if (contactSection && particlesContato) {
+            const infoItems = contactSection.querySelectorAll('.info-item');
+            const MAX_CONTACT_ICONS = 40;
+
+            function createContactIcon(iconClass) {
+                if (particlesContato.children.length >= MAX_CONTACT_ICONS) return;
+                const el = document.createElement('i');
+                el.className = `bi ${iconClass} contact-floating-icon`;
+                el.style.left = `${Math.random() * 100}%`;
+                el.style.fontSize = `${Math.random() * 30 + 35}px`;
+                const duration = Math.random() * 6 + 6; // 6-12s
+                el.style.animationDuration = `${duration}s`;
+                el.style.bottom = `${-10 + Math.random() * 20}px`;
+                particlesContato.appendChild(el);
+                setTimeout(() => { el.remove(); }, duration * 1000 + 300);
+            }
+
+            infoItems.forEach(item => {
+                let contactInterval = null;
+                // armazena a classe de ícone atual para permitir limpeza ao sair do hover
+                item._iconClass = null;
+
+                item.addEventListener('mouseenter', () => {
+                    // limpa ícones de hovers anteriores imediatamente (fade curto)
+                    const existing = particlesContato.querySelectorAll('.contact-floating-icon');
+                    existing.forEach(el => {
+                        el.style.transition = 'opacity 0.18s';
+                        el.style.opacity = '0';
+                        setTimeout(() => { el.remove(); }, 200);
+                    });
+
+                    // garante que nenhum intervalo antigo continue ativo (prevenindo sobreposição)
+                    infoItems.forEach(it => {
+                        if (it._contactInterval) {
+                            clearInterval(it._contactInterval);
+                            it._contactInterval = null;
+                        }
+                    });
+
+                    const iconEl = item.querySelector('i.bi');
+                    const iconClass = iconEl ? Array.from(iconEl.classList).find(c => c.startsWith('bi-')) : 'bi-telephone';
+                    item._iconClass = iconClass;
+                    // burst inicial
+                    for (let i = 0; i < 8; i++) createContactIcon(iconClass);
+                    if (!contactInterval) contactInterval = setInterval(() => createContactIcon(iconClass), 300);
+                    item._contactInterval = contactInterval;
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    if (item._contactInterval) {
+                        clearInterval(item._contactInterval);
+                        item._contactInterval = null;
+                    }
+
+                    // remove imediatamente os ícones restantes pertencentes a este item
+                    const ic = item._iconClass;
+                    if (ic) {
+                        const nodes = particlesContato.querySelectorAll(`.contact-floating-icon.${ic}`);
+                        nodes.forEach(el => {
+                            // fade rápido antes de remover para ficar suave
+                            el.style.transition = 'opacity 0.25s';
+                            el.style.opacity = '0';
+                            setTimeout(() => { el.remove(); }, 250);
+                        });
+                    }
+
+                    item._iconClass = null;
+                });
+
+                item.addEventListener('click', () => {
+                    const iconEl = item.querySelector('i.bi');
+                    const iconClass = iconEl ? Array.from(iconEl.classList).find(c => c.startsWith('bi-')) : 'bi-telephone';
+                    for (let i = 0; i < 10; i++) createContactIcon(iconClass);
+                });
+            });
+        }
+
     });
 });
 
