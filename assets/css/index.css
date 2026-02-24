@@ -1083,7 +1083,7 @@ button.btn-project:hover::after {
     .service-card {
         width: 100%;
         height: fit-content;
-    
+
     }
 
     /* Colocar o ícone ao lado do título apenas nesta resolução */
@@ -1098,14 +1098,15 @@ button.btn-project:hover::after {
         font-size: 0.7rem;
         display: inline-block;
         vertical-align: middle;
-        margin: 0; /* remove margens verticais para alinhamento */
+        margin: 0;
+        /* remove margens verticais para alinhamento */
     }
 
     .service-card p {
         font-size: 0.7rem;
     }
 
-     .project-mockup img.mockup.desktop {
+    .project-mockup img.mockup.desktop {
         width: 90vw;
     }
 
@@ -1121,8 +1122,63 @@ button.btn-project:hover::after {
         text-align: center;
     }
 
-     /* Project 1 */
+    /* Project 1 */
 
+    #project1 {
+        padding: 10rem 0 0 0;
+        display: grid;
+        place-items: center;
+
+    }  
+.project-info {
+        margin: -1px 0 0 0 ;
+        text-align: center;
+    }
+    
+    #project1 h3 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+
+    #project1 p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .mockup-controls {
+        display: none;
+    }
+
+    /* Project 2 */
+
+    #project2 {
+        padding: 10rem 0 0 0;
+        display: grid;
+        place-items: center;
+    }
+
+    .project-info2{
+        margin-bottom: 1px;
+    }
+    
+    #project2 h3 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    #project2 p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+     /* Project 3 */
+
+     #project3 {
+        padding: 10rem 0 0 0;
+        display: grid;
+        place-items: center;
+    }
 
 
 }
