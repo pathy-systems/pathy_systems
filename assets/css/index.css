@@ -1063,7 +1063,7 @@ button.btn-project:hover::after {
 
 }
 
-@media (max-width:390px) {
+@media (max-width:440px) {
 
     #servicos h2 {
         font-size: 1.8rem;
@@ -1108,6 +1108,7 @@ button.btn-project:hover::after {
      .project-mockup img.mockup.desktop {
         width: 90vw;
     }
+
 
 
 
