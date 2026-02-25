@@ -242,13 +242,10 @@
     height: 100vh;
     width: 100vw;
     display: flex;
-    background-color: transparent;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     overflow: hidden;
-    background-color: var(--primary-black);
 
 }
 
@@ -337,17 +334,20 @@
 
 /* ============================================================================================================================== */
 
-#project1 {
-    min-height: 100vh;
-    /* reduzido de 100vh */
-    width: 100vw;
-    padding: 4rem 0;
+.project-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: var(--primary-black);
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
+    margin: 2rem auto 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+#project1 {
+    display: grid;
+    background-color: var(--primary-black);
     position: relative;
     overflow: hidden;
     z-index: 2;
@@ -584,17 +584,8 @@ button.btn-project:hover::after {
 
 
 #project2 {
-    min-height: 70vh;
-    /* reduzido de 100vh */
-    width: 100vw;
-    padding: 4rem 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     background-color: var(--primary-black);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     overflow: hidden;
     z-index: 2;
 }
@@ -634,16 +625,8 @@ button.btn-project:hover::after {
 /* Project 3 */
 
 #project3 {
-    min-height: 100vh;
-    /* reduzido de 100vh */
-    width: 100vw;
-    padding: 4rem 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     background-color: var(--primary-black);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
     overflow: hidden;
     z-index: 2;
@@ -905,6 +888,11 @@ button.btn-project:hover::after {
 
 @media (max-width:850px) {
 
+    header {
+        padding: 1rem 2rem;
+        width: calc(100% - 12rem);
+    }
+
     #home h1 {
         font-size: 5.5rem;
         margin: 0;
@@ -952,12 +940,12 @@ button.btn-project:hover::after {
         margin: 0;
     }
 
-    #project1,
-    #project2,
-    #project3 {
+    .project-content {
         grid-template-columns: 1fr;
+        width: 80vw;
+        gap: 5rem;
+    }   
 
-    }
 
     .project-info {
         margin: -2rem 0 0 0;
@@ -972,8 +960,6 @@ button.btn-project:hover::after {
     .project-mockup img.mockup.desktop {
         width: 90vw;
     }
-
-
 
     .project-mockup img.mockup.tablet {
         height: 50vh;
@@ -1104,6 +1090,8 @@ button.btn-project:hover::after {
 
     .service-card p {
         font-size: 0.7rem;
+        margin: 0 auto 0 auto;
+
     }
 
     .project-mockup img.mockup.desktop {
@@ -1124,15 +1112,35 @@ button.btn-project:hover::after {
 
     /* Project 1 */
 
-   
+    .project-content {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        margin: 7rem auto 0 auto;
+        height: 80vh;
+    }
+
+    #project1 h3, #project2 h3, #project3 h3 {
+        font-size: 2rem;
+    }
+
+    #project1 p, #project2 p, #project3 p {
+        font-size: 1rem;
+    }
+
+    #project1 span, #project2 span, #project3 span {
+        font-size: .8rem;
+    }
+    
+    #project3 .project-mockup  {
+        width: 80vw;
+        height: 5vh;
+    }
+
+
+
     .mockup-controls {
         display: none;
     }
-
-    /* Project 2 */
-
-  
-     /* Project 3 */
-
 
 }
