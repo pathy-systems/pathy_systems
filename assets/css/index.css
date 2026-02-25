@@ -944,7 +944,7 @@ button.btn-project:hover::after {
         grid-template-columns: 1fr;
         width: 80vw;
         gap: 5rem;
-    }   
+    }
 
 
     .project-info {
@@ -1100,6 +1100,13 @@ button.btn-project:hover::after {
 
     /* Portfolio */
 
+    #portfolio {
+        height: 100vh;
+        margin: auto;
+    }
+
+    
+
     #portfolio h3 {
         font-size: 3.5rem;
         text-align: center;
@@ -1120,19 +1127,25 @@ button.btn-project:hover::after {
         height: 80vh;
     }
 
-    #project1 h3, #project2 h3, #project3 h3 {
+    #project1 h3,
+    #project2 h3,
+    #project3 h3 {
         font-size: 2rem;
     }
 
-    #project1 p, #project2 p, #project3 p {
+    #project1 p,
+    #project2 p,
+    #project3 p {
         font-size: 1rem;
     }
 
-    #project1 span, #project2 span, #project3 span {
+    #project1 span,
+    #project2 span,
+    #project3 span {
         font-size: .8rem;
     }
-    
-    #project3 .project-mockup  {
+
+    #project3 .project-mockup {
         width: 80vw;
         height: 5vh;
     }
@@ -1142,5 +1155,24 @@ button.btn-project:hover::after {
     .mockup-controls {
         display: none;
     }
+
+    .contato-container {
+        width: 90vw;
+        height: auto;
+    }
+
+     .contact-left,
+     .contact-right {
+         width: 100%;
+         height: auto;
+     }
+
+     .contact-left {
+         border-radius: 2rem 2rem 0 0;
+     }
+
+     .contact-right {
+         border-radius: 0 0 2rem 2rem;
+     }
 
 }
