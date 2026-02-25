@@ -1124,7 +1124,11 @@ button.btn-project:hover::after {
         justify-content: center;
         align-items: center;
         margin: 7rem auto 0 auto;
-        height: 80vh;
+        height: 75vh;
+    }
+
+    #project3 .project-content {
+        margin: 12rem auto 0 auto;
     }
 
     #project1 h3,
