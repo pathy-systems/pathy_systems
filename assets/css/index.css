@@ -1051,6 +1051,11 @@ button.btn-project:hover::after {
 
 @media (max-width:440px) {
 
+      header {
+        padding: 1rem 2rem;
+        width: calc(100% - 5rem);
+    }
+
     #servicos h2 {
         font-size: 1.8rem;
     }
