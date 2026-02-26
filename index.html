@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Pathy Systems - Pedro Santos">
     <title>Pathy Systems | Home</title>
+
+    <!-- ADICIONAR ISTO -->
+    <meta name="description"
+        content="Pathy Systems - Desenvolvimento de sites, marketing digital e soluções tecnológicas para empresas.">
+    <meta name="keywords" content="desenvolvimento web, marketing digital, sites responsivos, São Paulo">
+    <meta property="og:title" content="Pathy Systems | Soluções Digitais">
+    <meta property="og:description" content="Transformamos ideias em soluções digitais que geram resultados reais.">
+    <meta property="og:image" content="https://pathysystems.com/assets/img/og-image.jpg">
+    <meta property="og:url" content="https://pathysystems.com">
+
+    <link rel="preload" href="assets/fonts/code/CODE_Light.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="assets/fonts/london_between/LondonMM.ttf" as="font" type="font/ttf" crossorigin>
+
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/letters.css">
     <link rel="stylesheet" href="assets/css/index.css?v=1.1">
@@ -25,7 +38,7 @@
 <body>
     <header>
         <a href="index.html">
-            <img src="assets/img/PS.svg" alt="Logo Pathy Systems">
+            <img src="assets/img/PS.svg" loading="lazy" alt="Logo Pathy Systems">
         </a>
 
         <nav class="menu-desk">
@@ -50,22 +63,84 @@
         </div>
     </header>
 
+    <!-- Menu Mobile Overlay -->
+    <div class="menu-mobile-overlay" id="menuMobileOverlay">
+        <div class="menu-mobile-content">
+            <button class="menu-mobile-close" aria-label="Fechar menu">
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+            <nav class="menu-mobile-nav">
+                <ul>
+                    <li>
+                        <a href="#home" class="menu-mobile-link" data-section="home">
+                            <span>Home</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#servicos" class="menu-mobile-link" data-section="servicos">
+                            <span>Serviços</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="menu-mobile-link" data-section="portfolio">
+                            <span>Portfólio</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contato" class="menu-mobile-link" data-section="contato">
+                            <span>Contato</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu-mobile-footer">
+                <div class="menu-mobile-socials">
+                    <a href="https://www.instagram.com/pathy_systems/" target="_blank" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5511971043603" target="_blank" aria-label="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://github.com/pathy-systems" target="_blank" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </div>
+                <p class="menu-mobile-copyright">© 2026 Pathy Systems</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <main>
         <div class="sections">
             <section id="home" class="section hero">
                 <div class="hero-content">
-                    <h1>Pathy Systems</h1>
+                    <h1 class="typewriter-title">
+                        <span class="typewriter-text"></span>
+                        <span class="typewriter-cursor">|</span>
+                    </h1>
+
                     <h2>Desenvolvemos soluções digitais que geram crescimento real para empresas.</h2>
                     <div class="container-icons">
-                        <a href="https://www.instagram.com/pathy_systems/" target="_blank"><i
-                                class="bi bi-instagram"></i></a>
-                        <a href="https://wa.me/5511971043603" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                        <a href="https://github.com/pathy-systems" target="_blank"><i class="bi bi-github"></i></a>
-                        <a href="tel:+5511987654321"><i class="bi bi-telephone-plus-fill"></i></a>
-                        <a href="https://www.tiktok.com/@pathy_systems" target="_blank"><i class="bi bi-tiktok"></i></a>
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank"
+                            aria-label="Instagram Pathy Systems"><i class="bi bi-instagram"></i></a>
+                        <a href="https://wa.me/5511971043603" target="_blank" aria-label="WhatsApp Pathy Systems"><i
+                                class="bi bi-whatsapp"></i></a>
+                        <a href="https://github.com/pathy-systems" target="_blank" aria-label="GitHub Pathy Systems"><i
+                                class="bi bi-github"></i></a>
+                        <a href="tel:+5511987654321" aria-label="Telefone Pathy Systems"><i
+                                class="bi bi-telephone-plus-fill"></i></a>
+                        <a href="https://www.tiktok.com/@pathy_systems" target="_blank"
+                            aria-label="TikTok Pathy Systems"><i class="bi bi-tiktok"></i></a>
                     </div>
                 </div>
-                <button class="btn-home"><i class="bi bi-arrow-down"></i></button>
+                <button class="btn-home" aria-label="Ver serviços"><i class="bi bi-arrow-down"></i></button>
             </section>
 
             <section id="servicos" class="section services">
@@ -107,9 +182,9 @@
             </section>
 
             <section id="portfolio" class="section portfolio">
-                    <h3>Portfólio</h3>
-                    <span>Projetos desenvolvidos para gerar resultados reais</span>
-                    <button class="btn-portfolio"><i class="bi bi-arrow-down"></i></button>
+                <h3>Portfólio</h3>
+                <span>Projetos desenvolvidos para gerar resultados reais</span>
+                <button class="btn-portfolio" aria-label="Ver projetos"><i class="bi bi-arrow-down"></i></button>
             </section>
 
             <section id="project1" class="section project1">
@@ -251,7 +326,7 @@
                         </a>
 
 
-                        <a href="https://wa.me/5511971043603" target="_blank">
+                        <a href="https://wa.me/5511971043603" target="_blank" aria-label="WhatsApp Pathy Systems">
                             <div class="info-item">
                                 <div class="info-content">
                                     <h5><i class="bi bi-whatsapp"></i>Whatsapp</h5>
@@ -260,7 +335,8 @@
                             </div>
                         </a>
 
-                        <a href="https://www.instagram.com/pathy_systems/" target="_blank">
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank"
+                            aria-label="Instagram Pathy Systems">
                             <div class="info-item">
                                 <div class="info-content">
                                     <h5><i class="bi bi-instagram"></i>Instagram</h5>
@@ -269,12 +345,15 @@
                             </div>
                         </a>
 
-                        <div class="info-item">
-                            <div class="info-content">
-                                <h5><i class="bi bi-tiktok"></i>Tik Tok</h5>
-                                <p>@pathy_systems</p>
+                        <a href="https://www.tiktok.com/@pathy_systems" target="_blank"
+                            aria-label="TikTok Pathy Systems">
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <h5><i class="bi bi-tiktok"></i>Tik Tok</h5>
+                                    <p>@pathy_systems</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
                         <a href="mailto:pathysystems@gmail.com">
                             <div class="info-item">
@@ -285,6 +364,11 @@
                                 </div>
                             </div>
                         </a>
+
+                        <button class="btn-contact-mobile">
+                            <i class="bi bi-chat-right-quote-fill"></i>
+                            Envie uma mensagem
+                        </button>
                     </div>
 
                     <div class="contact-right">

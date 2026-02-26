@@ -1,3 +1,241 @@
+// ============================================
+// MENU MOBILE 
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuMobileIcon = document.querySelector('.menu-mobile');
+    const menuMobileOverlay = document.getElementById('menuMobileOverlay');
+    const menuMobileClose = document.querySelector('.menu-mobile-close');
+    const menuMobileLinks = document.querySelectorAll('.menu-mobile-link');
+    const header = document.querySelector('header');
+    const body = document.body;
+
+    // Abrir menu
+    function openMenu() {
+        menuMobileOverlay.classList.add('active');
+        header.classList.add('menu-open');
+        body.classList.add('menu-mobile-open');
+        
+        // Criar partículas decorativas
+        createMenuParticles();
+        
+        // Focar no botão fechar para acessibilidade
+        setTimeout(() => menuMobileClose.focus(), 100);
+    }
+
+    // Fechar menu
+    function closeMenu() {
+        menuMobileOverlay.classList.remove('active');
+        header.classList.remove('menu-open');
+        body.classList.remove('menu-mobile-open');
+        
+        // Remover partículas
+        const particles = menuMobileOverlay.querySelectorAll('.menu-mobile-particle');
+        particles.forEach(p => p.remove());
+    }
+
+    // Criar partículas decorativas no fundo do menu
+    function createMenuParticles() {
+        const container = document.createElement('div');
+        container.className = 'menu-mobile-particles';
+        
+        const icons = ['bi-code-slash', 'bi-brush', 'bi-phone', 'bi-lightning', 'bi-globe', 'bi-cpu'];
+        
+        for (let i = 0; i < 8; i++) {
+            const particle = document.createElement('i');
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            particle.className = `bi ${randomIcon} menu-mobile-particle`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            container.appendChild(particle);
+        }
+        
+        menuMobileOverlay.appendChild(container);
+    }
+
+    // Event Listeners
+    if (menuMobileIcon) {
+        menuMobileIcon.addEventListener('click', openMenu);
+        menuMobileIcon.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            openMenu();
+        }, { passive: false });
+    }
+
+    if (menuMobileClose) {
+        menuMobileClose.addEventListener('click', closeMenu);
+    }
+
+    // Fechar ao clicar nos links
+    menuMobileLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            closeMenu();
+            
+            // Aguardar animação de fechamento antes de scrollar
+            setTimeout(() => {
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
+        });
+    });
+
+    // Fechar ao clicar fora do conteúdo
+    menuMobileOverlay.addEventListener('click', (e) => {
+        if (e.target === menuMobileOverlay) {
+            closeMenu();
+        }
+    });
+
+    // Fechar com tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuMobileOverlay.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Atualizar link ativo baseado na seção visível
+    function updateActiveLink() {
+        const sections = document.querySelectorAll('.section');
+        const scrollPosition = document.querySelector('.sections').scrollTop;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPosition >= sectionTop - sectionHeight / 3) {
+                menuMobileLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Observer para atualizar link ativo
+    const sectionsContainer = document.querySelector('.sections');
+    if (sectionsContainer) {
+        sectionsContainer.addEventListener('scroll', updateActiveLink);
+    }
+
+    // Prevenir scroll no body quando menu aberto (solução alternativa)
+    let scrollY = 0;
+    function preventScroll(e) {
+        if (body.classList.contains('menu-mobile-open')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }
+
+    window.addEventListener('scroll', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+});
+
+
+/* ============================================================================================ */
+
+
+    
+    // ============================================
+    // EFEITO TYPEWRITER - PATHY SYSTEMS
+    // ============================================
+    
+    const typewriterConfig = {
+        text: "Pathy Systems",
+        element: document.querySelector('.typewriter-text'),
+        cursor: document.querySelector('.typewriter-cursor'),
+        typingSpeed: 100,      // ms entre cada letra
+        startDelay: 500,       // ms antes de começar
+        deleteSpeed: 50,       // ms ao apagar (opcional)
+        pauseEnd: 2000,        // ms pausa no final
+        loop: false            // true = repete infinito
+    };
+
+    function typeWriter(config) {
+        const { text, element, cursor, typingSpeed, startDelay, pauseEnd, loop } = config;
+        
+        if (!element) return;
+        
+        let index = 0;
+        let isDeleting = false;
+        
+        // Estado inicial
+        element.textContent = '';
+        cursor.classList.add('typing');
+        
+        function type() {
+            const currentText = text;
+            
+            if (isDeleting) {
+                // Apagando
+                element.textContent = currentText.substring(0, index - 1);
+                index--;
+            } else {
+                // Digitando
+                element.textContent = currentText.substring(0, index + 1);
+                index++;
+            }
+            
+            // Verifica estado
+            if (!isDeleting && index === currentText.length) {
+                // Terminou de digitar
+                cursor.classList.remove('typing');
+                cursor.classList.add('finished');
+                
+                if (loop) {
+                    // Pausa antes de apagar
+                    setTimeout(() => {
+                        isDeleting = true;
+                        cursor.classList.remove('finished');
+                        cursor.classList.add('typing');
+                        setTimeout(type, typingSpeed);
+                    }, pauseEnd);
+                    return;
+                } else {
+                    // Mantém cursor piscando suave ou some
+                    setTimeout(() => {
+                        cursor.style.opacity = '0';
+                    }, 1000);
+                    return;
+                }
+            } else if (isDeleting && index === 0) {
+                // Terminou de apagar
+                isDeleting = false;
+                setTimeout(type, startDelay);
+                return;
+            }
+            
+            // Próxima letra
+            const speed = isDeleting ? typingSpeed / 2 : typingSpeed;
+            // Variação natural na velocidade (human-like)
+            const randomSpeed = speed + (Math.random() * 50 - 25);
+            
+            setTimeout(type, randomSpeed);
+        }
+        
+        // Inicia após delay
+        setTimeout(type, startDelay);
+    }
+
+    // Iniciar efeito
+    typeWriter(typewriterConfig);
+    
+    // ============================================
+    // RESTO DO SEU CÓDIGO...
+    // ============================================
+
+    /* ================================================================================================================================================================================= */
+
+
 console.log('script.js loaded');
 
 // Protege a execução do tsParticles caso a lib não carregue (evita que todo o script pare)
@@ -16,8 +254,8 @@ if (typeof tsParticles !== 'undefined' && tsParticles && typeof tsParticles.load
                 links: { enable: true, distance: 200, color: "#ffffff", opacity: 0.25, width: 1 },
             },
             interactivity: {
-                events: { onHover: { enable: true, mode: "grab" }},
-                modes: { grab: { distance: 180, links: { opacity: 0.8 }}}
+                events: { onHover: { enable: true, mode: "grab" } },
+                modes: { grab: { distance: 180, links: { opacity: 0.8 } } }
             }
         });
     } catch (e) {
@@ -38,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnHome && sectionServicosTarget) {
         btnHome.addEventListener('click', () => {
-            sectionServicosTarget.scrollIntoView({ 
+            sectionServicosTarget.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
@@ -270,6 +508,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     mockupImg.setAttribute('src', src);
                     mockupImg.classList.remove('mobile', 'desktop', 'tablet');
                     mockupImg.classList.add(size);
+                    mockupImg.loading = 'lazy';
+                    mockupImg.decoding = 'async';
 
                     requestAnimationFrame(() => {
                         mockupImg.style.opacity = 1;
@@ -289,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => { finalize(); }, 2000);
             });
         });
-        
+
         // CONTACT HOVER ICONS: cria ícones flutuantes no fundo de #contato ao passar o mouse sobre cada .info-item
         const contactSection = document.getElementById('contato');
         const particlesContato = document.getElementById('particles-contato');
@@ -450,4 +690,77 @@ if (particlesContainer && servicosSection) {
     observer.observe(servicosSection);
 }
 
+// ===============================
+// CONTACT ANIMATION - MOBILE (440px)
+// ===============================
 
+const btnContactMobile = document.querySelector('.btn-contact-mobile');
+const contactLeft = document.querySelector('.contact-left');
+const contactRight = document.querySelector('.contact-right');
+
+let backBtn; // declarado no escopo externo para poder ser acessado por outros handlers
+
+if (btnContactMobile && contactLeft && contactRight) {
+    btnContactMobile.addEventListener('click', () => {
+        // Verifica se estamos em tela móvel (440px)
+        const isMobileView = window.matchMedia('(max-width: 440px)').matches;
+
+        if (isMobileView) {
+            contactLeft.classList.add('hidden-mobile');
+            contactRight.classList.add('active-mobile');
+            btnContactMobile.style.display = 'none';
+            // se o botão de voltar existir, mostre-o
+            if (backBtn) {
+                backBtn.style.display = 'block';
+            }
+            // atualiza visibilidade caso a função seja usada
+            if (typeof updateBackButtonVisibility === 'function') {
+                updateBackButtonVisibility();
+            }
+        }
+    });
+
+    // Adicionar botão "Voltar" no formulário para voltar ao lado esquerdo
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        // Criar botão "Voltar"
+        backBtn = document.createElement('button');
+        backBtn.type = 'button';
+        backBtn.className = 'btn-back-contact';
+        backBtn.innerHTML = '<i class="bi bi-arrow-left"></i>';
+        backBtn.style.display = 'none'; // Inicialmente oculto
+
+        // Inserir depois do botão de submit
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        if (submitBtn) {
+            submitBtn.parentNode.insertBefore(backBtn, submitBtn.nextSibling);
+        }
+
+        // Event listener para o botão de volta
+        backBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isMobileView = window.matchMedia('(max-width: 440px)').matches;
+
+            if (isMobileView) {
+                contactLeft.classList.remove('hidden-mobile');
+                contactRight.classList.remove('active-mobile');
+                btnContactMobile.style.display = 'flex';
+                backBtn.style.display = 'none';
+            }
+        });
+
+        // Mostrar/ocultar botão de volta baseado na vista
+        const updateBackButtonVisibility = () => {
+            const isMobileView = window.matchMedia('(max-width: 440px)').matches;
+            if (isMobileView && contactRight.classList.contains('active-mobile')) {
+                backBtn.style.display = 'block';
+            } else {
+                backBtn.style.display = 'none';
+            }
+        };
+
+        // Atualizar quando a janela é redimensionada
+        window.addEventListener('resize', updateBackButtonVisibility);
+        updateBackButtonVisibility();
+    }
+}

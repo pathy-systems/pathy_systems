@@ -128,16 +128,283 @@ header span:hover {
     transform: scale(1.05);
 }
 
+/* ============================================
+   MENU MOBILE - PATHY SYSTEMS
+   ============================================ */
+
+.menu-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.menu-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.menu-mobile-content {
+    width: 90%;
+    max-width: 400px;
+    background: var(--secondary-black);
+    border: 3px solid var(--tertiary-black);
+    border-radius: 2rem;
+    padding: 2rem;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.menu-mobile-overlay.active .menu-mobile-content {
+    transform: translateY(0) scale(1);
+}
+
+/* Botão Fechar */
+.menu-mobile-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: 2px solid var(--tertiary-black);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--primary-white);
+    font-size: 1.2rem;
+}
+
+.menu-mobile-close:hover {
+    background: var(--tertiary-black);
+    transform: rotate(90deg);
+    border-color: var(--primary-white);
+}
+
+/* Navegação */
+.menu-mobile-nav {
+    margin-top: 3rem;
+}
+
+.menu-mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-mobile-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    color: var(--primary-gray);
+    font-family: 'font2';
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-mobile-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.menu-mobile-link:hover::before {
+    transform: translateX(100%);
+}
+
+.menu-mobile-link:hover,
+.menu-mobile-link.active {
+    background: var(--tertiary-black);
+    border-color: var(--tertiary-black);
+    color: var(--primary-white);
+    transform: translateX(10px);
+}
+
+.menu-mobile-link i {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.menu-mobile-link:hover i,
+.menu-mobile-link.active i {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Footer do Menu */
+.menu-mobile-footer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--tertiary-black);
+    text-align: center;
+}
+
+.menu-mobile-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.menu-mobile-socials a {
+    color: var(--primary-gray);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.menu-mobile-socials a:hover {
+    color: var(--primary-white);
+    background: var(--tertiary-black);
+    border-color: var(--tertiary-black);
+    transform: translateY(-3px);
+}
+
+.menu-mobile-copyright {
+    color: var(--primary-gray);
+    font-family: 'font3';
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* Ícone do Menu (já existe no HTML, apenas estilizando) */
 .menu-mobile {
     display: none;
     font-size: 2rem;
     color: var(--primary-white);
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    z-index: 11;
 }
 
+.menu-mobile:hover {
+    background: var(--tertiary-black);
+    transform: scale(1.1);
+}
+
+/* Animação de entrada dos itens */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-mobile-overlay.active .menu-mobile-nav li {
+    animation: slideInUp 0.4s ease forwards;
+    opacity: 0;
+}
+
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(1) { animation-delay: 0.1s; }
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(2) { animation-delay: 0.2s; }
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(3) { animation-delay: 0.3s; }
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(4) { animation-delay: 0.4s; }
+
+/* Partículas decorativas no menu */
+.menu-mobile-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.menu-mobile-particle {
+    position: absolute;
+    color: var(--tertiary-black);
+    font-size: 20px;
+    animation: floatParticle 15s infinite linear;
+    opacity: 0.3;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-   
-    .menu-desk {
+    .menu-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Ajuste no header quando menu está ativo */
+    header.menu-open {
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
+    }
+
+     .menu-desk {
         display: none;
     }
 
@@ -145,4 +412,11 @@ header span:hover {
         display: block;
     }
 }
+
+/* Prevenção de scroll quando menu aberto */
+body.menu-mobile-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
 /* ================================================================= */
