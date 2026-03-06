@@ -43,7 +43,7 @@
     <!-- HEADER -->
     <header>
         <a href="index.html">
-            <img src="assets/img/PS.svg"  alt="Logo Pathy Systems">
+            <img src="assets/img/PS.svg" alt="Logo Pathy Systems">
         </a>
 
         <nav class="menu-desk">
@@ -153,7 +153,7 @@
             <!-- SEÇÃO SERVIÇOS -->
             <section id="servicos" class="section services">
                 <div class="services-header">
-                    
+
                 </div>
 
                 <div class="bento-grid">
@@ -341,78 +341,91 @@
             </section>
 
             <!-- SEÇÃO CONTATO -->
-            <section id="contato" class="section contato">
-                <div id="particles-contato"></div>
-                <div class="contato-container">
-                    <div class="contact-left">
-                        <div class="info-header">
-                            <h4>Fale conosco</h4>
-                            <p>Nossos meios de contato</p>
-                        </div>
-                        <a href="tel:5511971043603" target="_blank">
-                            <div class="info-item">
-                                <div class="info-content">
-                                    <h5><i class="bi bi-telephone"></i>Telefone</h5>
-                                    <p>(11) 97104-3603</p>
-                                </div>
+            <!-- SEÇÃO CONTATO - NOVA VERSÃO -->
+            <!-- SEÇÃO CONTATO - NOVA VERSÃO -->
+            <section id="contato" class="section">
+                
+
+                <div class="contact-wrapper">
+                    <!-- Lado Esquerdo - Cards de Contato -->
+                    <div class="contact-cards">
+                        <a href="https://wa.me/5511971043603" target="_blank" rel="noopener noreferrer"
+                            class="contact-card whatsapp">
+                            <div class="card-icon">
+                                <i class="bi bi-whatsapp"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>WhatsApp</h4>
+                                <span>(11) 97104-3603</span>
                             </div>
                         </a>
-                        <a href="https://wa.me/5511971043603" target="_blank" aria-label="WhatsApp Pathy Systems">
-                            <div class="info-item">
-                                <div class="info-content">
-                                    <h5><i class="bi bi-whatsapp"></i>Whatsapp</h5>
-                                    <p>(11) 97104-3603</p>
-                                </div>
+
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank" rel="noopener noreferrer"
+                            class="contact-card instagram">
+                            <div class="card-icon">
+                                <i class="bi bi-instagram"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Instagram</h4>
+                                <span>@pathy_systems</span>
                             </div>
                         </a>
-                        <a href="https://www.instagram.com/pathy_systems/" target="_blank"
-                            aria-label="Instagram Pathy Systems">
-                            <div class="info-item">
-                                <div class="info-content">
-                                    <h5><i class="bi bi-instagram"></i>Instagram</h5>
-                                    <p>@pathy_systems</p>
-                                </div>
+
+                        <a href="mailto:pathysystems@gmail.com" class="contact-card email">
+                            <div class="card-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Email</h4>
+                                <span>pathysystems@gmail.com</span>
                             </div>
                         </a>
-                        <a href="https://www.tiktok.com/@pathy_systems" target="_blank"
-                            aria-label="TikTok Pathy Systems">
-                            <div class="info-item">
-                                <div class="info-content">
-                                    <h5><i class="bi bi-tiktok"></i>Tik Tok</h5>
-                                    <p>@pathy_systems</p>
-                                </div>
+
+                        <a href="tel:+5511971043603" class="contact-card">
+                            <div class="card-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Telefone</h4>
+                                <span>(11) 97104-3603</span>
                             </div>
                         </a>
-                        <a href="mailto:pathysystems@gmail.com">
-                            <div class="info-item">
-                                <div class="info-content">
-                                    <h5><i class="bi bi-envelope"></i>Email</h5>
-                                    <p>pathysystems@gmail.com</p>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="btn-contact-mobile">
-                            <i class="bi bi-chat-right-quote-fill"></i>
-                            Envie uma mensagem
-                        </button>
                     </div>
 
-                    <div class="contact-right">
-                        <div class="form-header">
-                            <h4>Envie uma mensagem</h4>
-                            <p>Estamos prontos para ajudar você</p>
-                        </div>
-                        <form action="#" method="post" class="contact-form">
-                            <input type="text" name="name" placeholder="Seu Nome" required>
-                            <input type="email" name="email" placeholder="Seu Email" required>
-                            <input type="tel" name="telefone" placeholder="Seu Telefone" required>
-                            <textarea name="message" rows="2" placeholder="Sua Mensagem" required></textarea>
-                            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    <!-- Lado Direito - Formulário -->
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefone</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" placeholder="Conte-nos sobre seu projeto..."
+                                    required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <i class="bi bi-send-fill"></i> Enviar Mensagem
+                            </button>
+
+                            <div class="form-status" id="formStatus"></div>
                         </form>
                     </div>
                 </div>
             </section>
-
         </div>
     </main>
 

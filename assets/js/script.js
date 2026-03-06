@@ -9,13 +9,12 @@
 const CONFIG = {
     breakpoints: {
         mobile: 440,
-        tablet: 768,
+        tablet: 834,  // Atualizado para 834px
         desktop: 1024
     },
     particles: {
         maxArrows: 40,
         maxUpRightIcons: 150,
-        maxContactIcons: 40,
         maxServiceIcons: 30
     },
     animations: {
@@ -28,9 +27,6 @@ const CONFIG = {
 // UTILITÁRIOS
 // ============================================
 const Utils = {
-    /**
-     * Debounce para eventos de resize/scroll
-     */
     debounce: (func, wait) => {
         let timeout;
         return function executedFunction(...args) {
@@ -43,24 +39,12 @@ const Utils = {
         };
     },
 
-    /**
-     * Verifica se é mobile (<=440px)
-     */
-    isMobileView: () => window.matchMedia(`(max-width: ${CONFIG.breakpoints.mobile}px)`).matches,
+    isMobileView: () => window.matchMedia(`(max-width: ${CONFIG.breakpoints.tablet}px)`).matches,
 
-    /**
-     * Verifica se é tablet (<=768px)
-     */
     isTabletView: () => window.matchMedia(`(max-width: ${CONFIG.breakpoints.tablet}px)`).matches,
 
-    /**
-     * Seleciona elemento com verificação de segurança
-     */
     getElement: (selector, context = document) => context.querySelector(selector),
 
-    /**
-     * Seleciona múltiplos elementos
-     */
     getElements: (selector, context = document) => context.querySelectorAll(selector)
 };
 
@@ -91,25 +75,16 @@ const MobileMenu = (() => {
     }
 
     function bindEvents() {
-        // Abrir menu
         menuMobileIcon.addEventListener('click', openMenu);
         menuMobileIcon.addEventListener('touchstart', handleTouchStart, { passive: false });
-
-        // Fechar menu
         menuMobileClose?.addEventListener('click', closeMenu);
 
-        // Fechar ao clicar nos links
         menuMobileLinks.forEach(link => {
             link.addEventListener('click', handleLinkClick);
         });
 
-        // Fechar ao clicar fora
         menuMobileOverlay.addEventListener('click', handleOverlayClick);
-
-        // Fechar com ESC
         document.addEventListener('keydown', handleKeyDown);
-
-        // Scroll observer para link ativo
         initScrollObserver();
     }
 
@@ -146,7 +121,6 @@ const MobileMenu = (() => {
         menuMobileOverlay.classList.add('active');
         header?.classList.add('menu-open');
         body.classList.add('menu-mobile-open');
-        
         createMenuParticles();
         setTimeout(() => menuMobileClose?.focus(), 100);
     }
@@ -155,15 +129,12 @@ const MobileMenu = (() => {
         menuMobileOverlay.classList.remove('active');
         header?.classList.remove('menu-open');
         body.classList.remove('menu-mobile-open');
-        
-        // Remove partículas
         Utils.getElements('.menu-mobile-particle', menuMobileOverlay).forEach(p => p.remove());
     }
 
     function createMenuParticles() {
         const container = document.createElement('div');
         container.className = 'menu-mobile-particles';
-        
         const icons = ['bi-code-slash', 'bi-brush', 'bi-phone', 'bi-lightning', 'bi-globe', 'bi-cpu'];
         
         for (let i = 0; i < 8; i++) {
@@ -343,10 +314,7 @@ const ScrollButtons = (() => {
         const btnHome = Utils.getElement('.btn-home');
         const target = Utils.getElement('#servicos');
 
-        if (!btnHome || !target) {
-            console.warn('ScrollButtons: Home button ou serviços não encontrados');
-            return;
-        }
+        if (!btnHome || !target) return;
 
         btnHome.addEventListener('click', () => {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -358,10 +326,7 @@ const ScrollButtons = (() => {
         const portfolioSection = Utils.getElement('#portfolio');
         const project1Section = Utils.getElement('#project1');
 
-        if (!btnPortfolio || !project1Section) {
-            console.warn('ScrollButtons: Portfolio button ou project1 não encontrados');
-            return;
-        }
+        if (!btnPortfolio || !project1Section) return;
 
         let arrowsInterval = null;
 
@@ -399,7 +364,6 @@ const ScrollButtons = (() => {
         el.style.opacity = 0;
         
         container.appendChild(el);
-
         setTimeout(() => el.remove(), duration * 1000 + 300);
     }
 
@@ -413,10 +377,7 @@ const ProjectButtons = (() => {
     function init() {
         const buttons = Utils.getElements('.project-info .btn-project, .btn-project');
         
-        if (!buttons.length) {
-            console.warn('ProjectButtons: Nenhum botão de projeto encontrado');
-            return;
-        }
+        if (!buttons.length) return;
 
         buttons.forEach(btn => {
             let interval = null;
@@ -449,7 +410,6 @@ const ProjectButtons = (() => {
         el.style.animationDelay = `${Math.random() * 0.6}s`;
 
         document.body.appendChild(el);
-
         setTimeout(() => el.remove(), duration * 1000 + 1000);
     }
 
@@ -461,7 +421,6 @@ const ProjectButtons = (() => {
 // ============================================
 const MockupSwitcher = (() => {
     function init() {
-        // Seleciona apenas seções de projeto (que têm mockup)
         const projectSections = document.querySelectorAll('.section[id^="project"]');
         
         projectSections.forEach(section => {
@@ -484,19 +443,14 @@ const MockupSwitcher = (() => {
         }
 
         init() {
-            // Garante botão ativo inicial
             const hasActive = Array.from(this.mockupBtns).some(b => b.classList.contains('active'));
             if (!hasActive) {
                 this.mockupBtns[0].classList.add('active');
             }
 
-            // Preload imagens
             this.preloadImages();
-            
-            // Setup observer
             this.setupIntersectionObserver();
             
-            // Bind events
             this.mockupBtns.forEach(btn => {
                 btn.addEventListener('click', () => this.handleButtonClick(btn));
             });
@@ -592,7 +546,6 @@ const MockupSwitcher = (() => {
         }
 
         handleButtonClick(btn) {
-            // Atualiza classes active
             this.mockupBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
@@ -637,123 +590,7 @@ const MockupSwitcher = (() => {
             };
             pre.src = src;
 
-            // Safety fallback
             setTimeout(finalize, 2000);
-        }
-    }
-
-    return { init };
-})();
-
-// ============================================
-// MÓDULO: CONTACT ICONS EFFECT
-// ============================================
-const ContactIconsEffect = (() => {
-    function init() {
-        const contactSection = Utils.getElement('#contato');
-        const particlesContato = Utils.getElement('#particles-contato');
-
-        if (!contactSection || !particlesContato) {
-            console.warn('ContactIconsEffect: Seção de contato não encontrada');
-            return;
-        }
-
-        const infoItems = Utils.getElements('.info-item', contactSection);
-        
-        infoItems.forEach(item => {
-            new InfoItemEffect(item, particlesContato);
-        });
-    }
-
-    class InfoItemEffect {
-        constructor(item, container) {
-            this.item = item;
-            this.container = container;
-            this.interval = null;
-            this.iconClass = null;
-
-            this.bindEvents();
-        }
-
-        bindEvents() {
-            this.item.addEventListener('mouseenter', () => this.handleMouseEnter());
-            this.item.addEventListener('mouseleave', () => this.handleMouseLeave());
-            this.item.addEventListener('click', () => this.handleClick());
-        }
-
-        handleMouseEnter() {
-            // Limpa ícones anteriores
-            this.clearExistingIcons();
-
-            // Obtém classe do ícone
-            const iconEl = this.item.querySelector('i.bi');
-            this.iconClass = iconEl 
-                ? Array.from(iconEl.classList).find(c => c.startsWith('bi-')) 
-                : 'bi-telephone';
-
-            // Cria burst inicial
-            for (let i = 0; i < 8; i++) {
-                this.createContactIcon(this.iconClass);
-            }
-
-            // Inicia intervalo
-            if (!this.interval) {
-                this.interval = setInterval(() => this.createContactIcon(this.iconClass), 300);
-            }
-        }
-
-        handleMouseLeave() {
-            if (this.interval) {
-                clearInterval(this.interval);
-                this.interval = null;
-            }
-
-            if (this.iconClass) {
-                const nodes = this.container.querySelectorAll(`.contact-floating-icon.${this.iconClass}`);
-                nodes.forEach(el => {
-                    el.style.transition = 'opacity 0.25s';
-                    el.style.opacity = '0';
-                    setTimeout(() => el.remove(), 250);
-                });
-            }
-
-            this.iconClass = null;
-        }
-
-        handleClick() {
-            const iconEl = this.item.querySelector('i.bi');
-            const iconClass = iconEl 
-                ? Array.from(iconEl.classList).find(c => c.startsWith('bi-')) 
-                : 'bi-telephone';
-            
-            for (let i = 0; i < 10; i++) {
-                this.createContactIcon(iconClass);
-            }
-        }
-
-        clearExistingIcons() {
-            const existing = this.container.querySelectorAll('.contact-floating-icon');
-            existing.forEach(el => {
-                el.style.transition = 'opacity 0.18s';
-                el.style.opacity = '0';
-                setTimeout(() => el.remove(), 200);
-            });
-        }
-
-        createContactIcon(iconClass) {
-            if (this.container.children.length >= CONFIG.particles.maxContactIcons) return;
-
-            const el = document.createElement('i');
-            el.className = `bi ${iconClass} contact-floating-icon`;
-            el.style.left = `${Math.random() * 100}%`;
-            el.style.fontSize = `${Math.random() * 30 + 35}px`;
-            const duration = Math.random() * 6 + 6;
-            el.style.animationDuration = `${duration}s`;
-            el.style.bottom = `${-10 + Math.random() * 20}px`;
-            
-            this.container.appendChild(el);
-            
-            setTimeout(() => el.remove(), duration * 1000 + 300);
         }
     }
 
@@ -831,7 +668,6 @@ const ServicosParticles = (() => {
         }
 
         particlesContainer.appendChild(icon);
-
         setTimeout(() => icon.remove(), duration * 1000);
     }
 
@@ -839,88 +675,8 @@ const ServicosParticles = (() => {
 })();
 
 // ============================================
-// MÓDULO: CONTACT MOBILE ANIMATION
+// MÓDULO: CAROUSEL DE PROJETOS
 // ============================================
-const ContactMobileAnimation = (() => {
-    let btnContactMobile, contactLeft, contactRight, backBtn;
-    let isInitialized = false;
-
-    function init() {
-        if (isInitialized) return;
-
-        btnContactMobile = Utils.getElement('.btn-contact-mobile');
-        contactLeft = Utils.getElement('.contact-left');
-        contactRight = Utils.getElement('.contact-right');
-
-        if (!btnContactMobile || !contactLeft || !contactRight) {
-            console.warn('ContactMobileAnimation: Elementos não encontrados');
-            return;
-        }
-
-        createBackButton();
-        bindEvents();
-        isInitialized = true;
-    }
-
-    function createBackButton() {
-        const contactForm = Utils.getElement('.contact-form');
-        if (!contactForm) return;
-
-        backBtn = document.createElement('button');
-        backBtn.type = 'button';
-        backBtn.className = 'btn-back-contact';
-        backBtn.innerHTML = '<i class="bi bi-arrow-left"></i>';
-        backBtn.style.display = 'none';
-
-        const submitBtn = Utils.getElement('.btn-submit', contactForm);
-        if (submitBtn) {
-            submitBtn.parentNode.insertBefore(backBtn, submitBtn.nextSibling);
-        }
-    }
-
-    function bindEvents() {
-        btnContactMobile.addEventListener('click', () => {
-            if (!Utils.isMobileView()) return;
-
-            contactLeft.classList.add('hidden-mobile');
-            contactRight.classList.add('active-mobile');
-            btnContactMobile.style.display = 'none';
-            if (backBtn) backBtn.style.display = 'block';
-        });
-
-        if (backBtn) {
-            backBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (!Utils.isMobileView()) return;
-
-                contactLeft.classList.remove('hidden-mobile');
-                contactRight.classList.remove('active-mobile');
-                btnContactMobile.style.display = 'flex';
-                backBtn.style.display = 'none';
-            });
-        }
-
-        // Atualiza visibilidade no resize
-        window.addEventListener('resize', Utils.debounce(() => {
-            if (!Utils.isMobileView() && backBtn) {
-                backBtn.style.display = 'none';
-                contactLeft.classList.remove('hidden-mobile');
-                contactRight.classList.remove('active-mobile');
-                btnContactMobile.style.display = 'none'; // Escondido em desktop
-            } else if (Utils.isMobileView() && !contactRight.classList.contains('active-mobile')) {
-                btnContactMobile.style.display = 'flex';
-            }
-        }, 250));
-    }
-
-    return { init };
-})();
-
-
-// ============================================
-// CAROUSEL DE PROJETOS - NAVEGAÇÃO E EFEITOS
-// ============================================
-
 const ProjectsCarousel = (() => {
     const projectSections = document.querySelectorAll('.project-section');
     const navLinks = document.querySelectorAll('.projects-nav a');
@@ -956,7 +712,6 @@ const ProjectsCarousel = (() => {
 
         projectSections.forEach(section => observer.observe(section));
 
-        // Detecta quando sai dos projetos
         const portfolioSection = document.getElementById('portfolio');
         const contatoSection = document.getElementById('contato');
         
@@ -976,18 +731,15 @@ const ProjectsCarousel = (() => {
     function updateActiveState(index) {
         currentIndex = index;
         
-        // Atualiza navegação
         navLinks.forEach((link, i) => {
             link.classList.toggle('active', i === index);
         });
         
-        // Atualiza progresso
         if (progressFill) {
             const progress = ((index + 1) / projectSections.length) * 100;
             progressFill.style.width = `${progress}%`;
         }
         
-        // Atualiza número
         if (currentNum) {
             currentNum.textContent = String(index + 1).padStart(2, '0');
         }
@@ -1029,11 +781,134 @@ const ProjectsCarousel = (() => {
     return { init };
 })();
 
-// Inicializar
-document.addEventListener('DOMContentLoaded', () => {
-    ProjectsCarousel.init();
-});
+// ============================================
+// MÓDULO: NOVA SEÇÃO CONTATO - MOBILE TOGGLE
+// ============================================
+const ContactSection = (() => {
+    let contactWrapper, contactCards, contactFormWrapper, toggleBtn, backBtn;
+    let isInitialized = false;
 
+    function init() {
+        if (isInitialized) return;
+
+        contactWrapper = Utils.getElement('.contact-wrapper');
+        contactCards = Utils.getElement('.contact-cards');
+        contactFormWrapper = Utils.getElement('.contact-form-wrapper');
+        
+        if (!contactWrapper || !contactCards || !contactFormWrapper) {
+            console.warn('ContactSection: Elementos não encontrados');
+            return;
+        }
+
+        createToggleButton();
+        createBackButton();
+        bindEvents();
+        handleResize();
+        
+        isInitialized = true;
+    }
+
+
+
+    function createBackButton() {
+        // Verifica se já existe
+        if (Utils.getElement('.btn-back-cards')) return;
+
+        backBtn = document.createElement('button');
+        backBtn.className = 'btn-back-cards';
+        backBtn.innerHTML = '<i class="bi bi-arrow-left"></i> Voltar';
+        
+        // Insere no início do formulário
+        contactFormWrapper.insertBefore(backBtn, contactFormWrapper.firstChild);
+    }
+
+    function createToggleButton() {
+        // Se já foi criado, retorna
+        if (Utils.getElement('.btn-toggle-form')) return;
+
+        toggleBtn = document.createElement('button');
+        toggleBtn.className = 'btn-toggle-form';
+        toggleBtn.textContent = 'ENVIAR MENSAGEM';
+
+        // Coloca dentro da coluna esquerda logo abaixo dos cartões
+        contactCards.appendChild(toggleBtn);
+    }
+
+    function bindEvents() {
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', showForm);
+        }
+
+        if (backBtn) {
+            backBtn.addEventListener('click', showCards);
+        }
+
+        window.addEventListener('resize', Utils.debounce(handleResize, 250));
+    }
+
+    function showForm() {
+        // only trigger on very small devices (<= mobile breakpoint)
+        if (window.innerWidth > CONFIG.breakpoints.mobile) return;
+        
+        contactCards.classList.add('hidden');
+        contactFormWrapper.classList.add('active');
+        contactWrapper.classList.add('form-active');
+
+        // hide the toggle button once form is visible
+        if (toggleBtn) toggleBtn.style.display = 'none';
+        if (backBtn) backBtn.style.display = 'flex';
+        
+        // Scroll suave para o formulário
+        setTimeout(() => {
+            contactFormWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+
+    function showCards() {
+        // only on small mobile
+        if (window.innerWidth > CONFIG.breakpoints.mobile) return;
+        
+        contactCards.classList.remove('hidden');
+        contactFormWrapper.classList.remove('active');
+        contactWrapper.classList.remove('form-active');
+
+        // restore toggle button
+        if (toggleBtn) toggleBtn.style.display = 'flex';
+        if (backBtn) backBtn.style.display = 'none';
+        
+        // Scroll suave para os cards
+        setTimeout(() => {
+            contactCards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+
+    function handleResize() {
+        if (window.innerWidth <= CONFIG.breakpoints.mobile) {
+            // very small mobile: show toggle button only
+            if (toggleBtn) toggleBtn.style.display = 'flex';
+            if (backBtn) backBtn.style.display = 'none';
+            
+            // Reset para estado inicial (mostrar cards)
+            contactCards.classList.remove('hidden');
+            contactFormWrapper.classList.remove('active');
+            contactWrapper.classList.remove('form-active');
+        } else {
+            // Larger screens: hide toggle button and back button, show both sides
+            if (toggleBtn) toggleBtn.style.display = 'none';
+            if (backBtn) backBtn.style.display = 'none';
+            
+            contactCards.classList.remove('hidden');
+            contactFormWrapper.classList.remove('active');
+            contactWrapper.classList.remove('form-active');
+        }
+    }
+
+    return { init };
+})();
+
+// ============================================
+// MÓDULO: FORMULÁRIO DE CONTATO
+// ============================================
 
 
 // ============================================
@@ -1042,14 +917,13 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Pathy Systems - Script inicializado');
 
-    // Inicializa todos os módulos
     MobileMenu.init();
     TypeWriter.init();
     ParticlesModule.init();
     ScrollButtons.init();
     ProjectButtons.init();
     MockupSwitcher.init();
-    ContactIconsEffect.init();
     ServicosParticles.init();
-    ContactMobileAnimation.init();
+    ProjectsCarousel.init();
+    ContactSection.init();
 });
