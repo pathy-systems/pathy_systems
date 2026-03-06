@@ -1527,7 +1527,7 @@ body.in-projects .project-progress {
         max-width: 100%;
         height: auto;
         gap: 1.5rem;
-        margin-top: 2rem;
+        margin-top: 4rem;
         padding: 0;
     }
 
