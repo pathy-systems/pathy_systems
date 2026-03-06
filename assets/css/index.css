@@ -1401,7 +1401,7 @@ body.in-projects .project-progress {
         flex: 0 0 85vw;
         min-width: 280px;
         max-width: 320px;
-        height: 400px;
+        height: 70vh;
         scroll-snap-align: center;
         margin-right: 0.5rem;
 
@@ -1420,7 +1420,7 @@ body.in-projects .project-progress {
         flex: 0 0 85vw;
         min-width: 280px;
         max-width: 320px;
-        height: 400px;
+        height: 70vh;
         justify-content: flex-start;
     }
 
@@ -1527,7 +1527,7 @@ body.in-projects .project-progress {
         max-width: 100%;
         height: auto;
         gap: 1.5rem;
-        margin: 0;
+        margin-top: 1rem;
         padding: 0;
     }
 
@@ -1542,7 +1542,7 @@ body.in-projects .project-progress {
 
     /* Mockup Container - área da imagem */
     .project-mockup {
-        width: 100%;
+        width: 80vw;
         max-width: 100%;
         background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
         border-radius: 16px;
@@ -1595,8 +1595,9 @@ body.in-projects .project-progress {
 
     /* Informações do projeto - card abaixo da imagem */
     .project-info {
-        width: 100%;
-        padding: 1.5rem;
+        width: 80vw;
+        height: 30%;
+        padding: 1rem;
         background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.1);
