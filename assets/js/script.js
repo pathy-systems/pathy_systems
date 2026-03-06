@@ -858,10 +858,7 @@ const ContactSection = (() => {
         if (toggleBtn) toggleBtn.style.display = 'none';
         if (backBtn) backBtn.style.display = 'flex';
         
-        // Scroll suave para o formulário
-        setTimeout(() => {
-            contactFormWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        // Scroll suave para o formulário - REMOVIDO PARA MANTER ESTÁTICO
     }
 
     function showCards() {
@@ -876,10 +873,7 @@ const ContactSection = (() => {
         if (toggleBtn) toggleBtn.style.display = 'flex';
         if (backBtn) backBtn.style.display = 'none';
         
-        // Scroll suave para os cards
-        setTimeout(() => {
-            contactCards.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        // Scroll suave para os cards - REMOVIDO PARA MANTER ESTÁTICO
     }
 
     function handleResize() {
