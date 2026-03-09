@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'font1';
+    src: url('../fonts/champagne_limousines/Champagne_e_Limousines.ttf');
+}
+
+@font-face {
+    font-family: 'font2';
+    src: url('../fonts/code/CODE_Light.otf');
+}
+
+@font-face {
+    font-family: 'font3';
+    src: url('../fonts/london_between/LondonMM.ttf');
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+

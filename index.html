@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Pathy Systems - Pedro Santos">
+    <title>Pathy Systems | Home</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Pathy Systems - Desenvolvimento de sites, marketing digital e soluções tecnológicas para empresas.">
+    <meta name="keywords" content="desenvolvimento web, marketing digital, sites responsivos, São Paulo">
+    <meta property="og:title" content="Pathy Systems | Soluções Digitais">
+    <meta property="og:description" content="Transformamos ideias em soluções digitais que geram resultados reais.">
+    <meta property="og:image" content="https://pathysystems.com/assets/img/og-image.jpg">
+    <meta property="og:url" content="https://pathysystems.com">
+
+    <!-- Preload Fonts -->
+    <link rel="preload" href="assets/fonts/code/CODE_Light.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="assets/fonts/london_between/LondonMM.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/letters.css">
+    <link rel="stylesheet" href="assets/css/index.css?v=2.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/PS.svg" type="image/svg+xml">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Castoro:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html">
+            <img src="assets/img/PS.svg" alt="Logo Pathy Systems">
+        </a>
+
+        <nav class="menu-desk">
+            <ul>
+                <li><a href="#home"><span>Home</span></a></li>
+                <li><a href="#servicos"><span>Serviços</span></a></li>
+                <li><a href="#portfolio"><span>Portfólio</span></a></li>
+                <li><a href="#contato"><span>Contato</span></a></li>
+            </ul>
+        </nav>
+
+        <div class="menu-mobile">
+            <i class="bi bi-list"></i>
+        </div>
+    </header>
+
+    <!-- MENU MOBILE OVERLAY -->
+    <div class="menu-mobile-overlay" id="menuMobileOverlay">
+        <div class="menu-mobile-content">
+            <button class="menu-mobile-close" aria-label="Fechar menu">
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+            <nav class="menu-mobile-nav">
+                <ul>
+                    <li>
+                        <a href="#home" class="menu-mobile-link" data-section="home">
+                            <span>Home</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#servicos" class="menu-mobile-link" data-section="servicos">
+                            <span>Serviços</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="menu-mobile-link" data-section="portfolio">
+                            <span>Portfólio</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contato" class="menu-mobile-link" data-section="contato">
+                            <span>Contato</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu-mobile-footer">
+                <div class="menu-mobile-socials">
+                    <a href="https://www.instagram.com/pathy_systems/" target="_blank" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5511971043603" target="_blank" aria-label="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://github.com/pathy-systems" target="_blank" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </div>
+                <p class="menu-mobile-copyright">© 2026 Pathy Systems</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="sections">
+
+            <!-- SEÇÃO HOME -->
+            <section id="home" class="section hero">
+                <div class="hero-content">
+                    <h1 class="typewriter-title">
+                        <span class="typewriter-text"></span>
+                        <span class="typewriter-cursor">|</span>
+                    </h1>
+                    <h2>Desenvolvemos soluções digitais que geram crescimento real para empresas.</h2>
+                    <div class="container-icons">
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank"
+                            aria-label="Instagram Pathy Systems">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/5511971043603" target="_blank" aria-label="WhatsApp Pathy Systems">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/pathy-systems" target="_blank" aria-label="GitHub Pathy Systems">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="tel:+5511987654321" aria-label="Telefone Pathy Systems">
+                            <i class="bi bi-telephone-plus-fill"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@pathy_systems" target="_blank"
+                            aria-label="TikTok Pathy Systems">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                <button class="btn-home" aria-label="Ver serviços">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </section>
+
+            <!-- SEÇÃO SERVIÇOS -->
+            <section id="servicos" class="section services">
+                <div class="services-header">
+
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Card 1 - Desenvolvimento Web (Grande) -->
+                    <article class="glass-card card-featured">
+                        <div class="card-number">01</div>
+
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="bi bi-code-square"></i>
+                            </div>
+                            <h3>Desenvolvimento Web Premium</h3>
+                            <p>Sites institucionais, landing pages de alta conversão e e-commerce com design exclusivo e
+                                performance otimizada. Cada projeto é único.</p>
+                        </div>
+
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 - Marketing Digital -->
+                    <article class="glass-card card-marketing">
+                        <div class="card-number">02</div>
+                        <div class="card-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Marketing Digital</h3>
+                            <p>Estratégias de SEO, gestão de tráfego e conteúdo que geram resultados mensuráveis.</p>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">SEO</span>
+                            <span class="tech-tag">Ads</span>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 - Identidade Visual -->
+                    <article class="glass-card card-design">
+                        <div class="card-number">03</div>
+                        <div class="card-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Identidade Visual</h3>
+                            <p>Logotipos, brand books e designs que comunicam a essência da sua marca.</p>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Branding</span>
+                            <span class="tech-tag">UI/UX</span>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 - Soluções Digitais -->
+                    <article class="glass-card card-solutions">
+                        <div class="card-number">04</div>
+                        <div class="card-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Soluções Digitais</h3>
+                            <p>Sistemas personalizados, automações e integrações que otimizam processos.</p>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Automação</span>
+                            <span class="tech-tag">APIs</span>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 - Consultoria -->
+                    <article class="glass-card card-consulting">
+                        <div class="card-number">05</div>
+                        <div class="card-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Consultoria Tech</h3>
+                            <p>Orientação estratégica para transformação digital do seu negócio.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SEÇÃO PORTFOLIO - INTRO -->
+            <section id="portfolio" class="section">
+                <h3>Portfólio</h3>
+                <span>Projetos desenvolvidos para gerar resultados reais</span>
+                <button class="btn-portfolio" aria-label="Ver projetos">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </section>
+
+            <!-- PROJETO 1 - SEÇÃO INDEPENDENTE -->
+            <section id="project1" class="section project-section">
+                <div class="project-content">
+                    <div class="project-mockup">
+                        <div class="mockup-controls">
+                            <button class="mockup-btn" data-src="assets/img/portfolio/fm_mobile.png"
+                                data-size="mobile">Mobile</button>
+                            <button class="mockup-btn active" data-src="assets/img/portfolio/fm_site.png"
+                                data-size="desktop">Desktop</button>
+                            <button class="mockup-btn" data-src="assets/img/portfolio/fm_tablet.png"
+                                data-size="tablet">Tablet</button>
+                        </div>
+                    </div>
+                    <div class="project-info" data-number="01">
+                        <h3>Frutamina</h3>
+                        <p>Plataforma desenvolvida para apresentar serviços de distribuição de hortifruti de forma
+                            clara, moderna e responsiva.</p>
+                        <div class="tech-cards">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="https://frutamina.github.io/final/" target="_blank">
+                            <button class="btn-project">
+                                <span>Ver projeto</span>
+                                <i class="bi bi-arrow-up-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJETO 2 - SEÇÃO INDEPENDENTE  -->
+            <section id="project2" class="section project-section">
+                <div class="project-content">
+                    <div class="project-mockup">
+                        <div class="mockup-controls">
+                            <button class="mockup-btn" data-src="assets/img/portfolio/cr_mobile.png"
+                                data-size="mobile">Mobile</button>
+                            <button class="mockup-btn active" data-src="assets/img/portfolio/cr_site.png"
+                                data-size="desktop">Desktop</button>
+                            <button class="mockup-btn" data-src="assets/img/portfolio/cr_tablet.png"
+                                data-size="tablet">Tablet</button>
+                        </div>
+                    </div>
+                    <div class="project-info" data-number="02">
+                        <h3>Celeiro Real</h3>
+                        <p>Website institucional para a Celeiro Real, com foco em conversão e agendamento online.</p>
+                        <div class="tech-cards">
+                            <span>HTML</span>
+                            <span>JavaScript</span>
+                            <span>CSS</span>
+                        </div>
+                        <a href="#" target="_blank">
+                            <button class="btn-project">
+                                <span>Ver projeto</span>
+                                <i class="bi bi-arrow-up-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJETO 3 - SEÇÃO INDEPENDENTE -->
+            <section id="project3" class="section project-section">
+                <div class="project-content">
+                    <div class="project-mockup">
+                        <div class="mockup-controls">
+                            <button class="mockup-btn active" data-src="assets/img/portfolio/4.webp"
+                                data-size="mobile">Horizontal</button>
+                            <button class="mockup-btn" data-src="assets/img/portfolio/1.webp"
+                                data-size="tablet">Vertical</button>
+                        </div>
+                    </div>
+                    <div class="project-info" data-number="03">
+                        <h3>Celeiro Real</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, aliquid.</p>
+                        <div class="tech-cards">
+                            <span>Vue.js</span>
+                            <span>Tailwind</span>
+                            <span>Firebase</span>
+                        </div>
+                        <a href="#" target="_blank">
+                            <button class="btn-project">
+                                <span>Ver projeto</span>
+                                <i class="bi bi-arrow-up-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO CONTATO -->
+            <!-- SEÇÃO CONTATO - NOVA VERSÃO -->
+            <!-- SEÇÃO CONTATO - NOVA VERSÃO -->
+            <section id="contato" class="section">
+                
+
+                <div class="contact-wrapper">
+                    <!-- Lado Esquerdo - Cards de Contato -->
+                    <div class="contact-cards">
+                        <a href="https://wa.me/5511971043603" target="_blank" rel="noopener noreferrer"
+                            class="contact-card whatsapp">
+                            <div class="card-icon">
+                                <i class="bi bi-whatsapp"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>WhatsApp</h4>
+                                <span>(11) 97104-3603</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/pathy_systems/" target="_blank" rel="noopener noreferrer"
+                            class="contact-card instagram">
+                            <div class="card-icon">
+                                <i class="bi bi-instagram"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Instagram</h4>
+                                <span>@pathy_systems</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:pathysystems@gmail.com" class="contact-card email">
+                            <div class="card-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Email</h4>
+                                <span>pathysystems@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:+5511971043603" class="contact-card">
+                            <div class="card-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Telefone</h4>
+                                <span>(11) 97104-3603</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Lado Direito - Formulário -->
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefone</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" placeholder="Conte-nos sobre seu projeto..."
+                                    required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <i class="bi bi-send-fill"></i> Enviar Mensagem
+                            </button>
+
+                            <div class="form-status" id="formStatus"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- NAVEGAÇÃO LATERAL DOS PROJETOS (FIXA) -->
+    <nav class="projects-nav" aria-label="Navegação dos projetos">
+        <a href="#project1" data-index="0" aria-label="Projeto 1"></a>
+        <a href="#project2" data-index="1" aria-label="Projeto 2"></a>
+        <a href="#project3" data-index="2" aria-label="Projeto 3"></a>
+    </nav>
+
+    <!-- PROGRESSO DO CAROUSEL -->
+    <div class="project-progress">
+        <span class="current">01</span>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <span class="total">03</span>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap/dist/ScrollTrigger.min.js"></script>
+</body>
+
+</html>
