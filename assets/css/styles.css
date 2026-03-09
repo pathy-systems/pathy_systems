@@ -3,6 +3,112 @@
  * Versão corrigida e otimizada
  */
 
+
+
+/* CURSOR  */
+
+/* ============================================
+   CURSOR PERSONALIZADO PREMIUM
+   ============================================ */
+
+/* ============================================
+   CURSOR HÍBRIDO - CORRIGIDO
+   ============================================ */
+
+/* Cursor central - posicionado pelo centro */
+.cursor {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    box-shadow: 
+        0 0 0 3px rgba(255, 255, 255, 0.15),
+        0 0 0 6px rgba(255, 255, 255, 0.08),
+        0 0 30px 8px rgba(255, 255, 255, 0.5);
+    transition: transform 0.15s ease, width 0.2s, height 0.2s;
+    /* Centraliza no ponto do mouse */
+    transform: translate(-50%, -50%);
+}
+
+/* Follower - também centralizado */
+.cursor-follower {
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: difference;
+    transition: transform 0.15s ease-out;
+    /* Centraliza no ponto do mouse */
+    transform: translate(-50%, -50%);
+}
+
+/* Anel externo (giratório) */
+.cursor-follower::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-right-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: rotate 4s linear infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Anel interno (contrário) */
+.cursor-follower::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1.5px solid transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.6);
+    border-left-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: rotateReverse 3s linear infinite;
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+    to { transform: rotate(-360deg); }
+}
+
+/* ============================================
+   ESTADOS INTERATIVOS
+   ============================================ */
+
+.cursor.hover {
+    transform: translate(-50%, -50%) scale(2.5);
+    box-shadow: 
+        0 0 0 4px rgba(255, 255, 255, 0.2),
+        0 0 0 8px rgba(255, 255, 255, 0.1),
+        0 0 50px 5px rgba(255, 255, 255, 0.6);
+}
+
+.cursor-follower.hover {
+    transform: translate(-50%, -50%) scale(1.8);
+}
+
+.cursor-follower.hover::before,
+.cursor-follower.hover::after {
+    animation-play-state: paused;
+    border-color: rgba(255, 255, 255, 0.8);
+    border-style: solid;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.cursor.click {
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: transform 0.1s;
+}
+
 /* ============================================
    VARIÁVEIS CSS - DESIGN SYSTEM
    ============================================ */
@@ -11,15 +117,15 @@
     --primary-white: #ffffff;
     --secondary-white: #d1d1d1;
     --tertiary-white: #e7e7e7;
-    
+
     --primary-black: #0f0f0f;
     --secondary-black: #2c2c2c;
     --tertiary-black: #3a3a3a;
-    
+
     --primary-gray: #bbb6b6;
     --secondary-gray: #524d4d;
     --tertiary-gray: #1f1e1e;
-    
+
     /* Z-Index Scale */
     --z-base: 1;
     --z-content: 2;
@@ -27,12 +133,12 @@
     --z-particles: 5;
     --z-overlay: 100;
     --z-modal: 200;
-    
+
     /* Breakpoints (referência) */
     --bp-mobile: 440px;
     --bp-tablet: 768px;
     --bp-desktop: 1024px;
-    
+
     /* Animações */
     --transition-fast: 0.3s ease;
     --transition-medium: 0.5s ease-in-out;
@@ -90,6 +196,44 @@ body::-webkit-scrollbar,
 }
 
 /* ============================================
+   TRANSIÇÕES SUAVES DE SEÇÃO
+   ============================================ */
+
+.section {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação específica para conteúdo interno */
+.section .services-header,
+.section .bento-grid,
+.section .project-content,
+.section .contact-wrapper {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.active .services-header,
+.section.active .bento-grid,
+.section.active .project-content,
+.section.active .contact-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delays escalonados */
+.section.active .services-header { transition-delay: 0.1s; }
+.section.active .bento-grid { transition-delay: 0.2s; }
+.section.active .project-content { transition-delay: 0.15s; }
+.section.active .contact-wrapper { transition-delay: 0.1s; }
+
+/* ============================================
    HEADER - NAVEGAÇÃO PRINCIPAL
    ============================================ */
 header {
@@ -104,26 +248,26 @@ header {
     width: calc(100% - 6rem);
     margin: 0;
     padding: 1.2rem 3rem;
-    
+
     /* Glassmorphism Premium */
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    
+
     /* Bordas elegantes */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 100px;
-    
+
     /* Sombra sutil de profundidade */
-    box-shadow: 
+    box-shadow:
         0 4px 30px rgba(0, 0, 0, 0.1),
         0 1px 1px rgba(255, 255, 255, 0.05) inset,
         0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-    
+
     /* Animações */
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: var(--z-header);
-    
+
     /* Animação de entrada */
     opacity: 0;
     animation: headerEntrance 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -141,7 +285,7 @@ header {
 header:hover {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 
+    box-shadow:
         0 8px 40px rgba(0, 0, 0, 0.2),
         0 1px 1px rgba(255, 255, 255, 0.1) inset,
         0 0 20px rgba(255, 255, 255, 0.05);
@@ -500,6 +644,7 @@ header.scrolled img {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -511,10 +656,21 @@ header.scrolled img {
     opacity: 0;
 }
 
-.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(1) { animation-delay: 0.1s; }
-.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(2) { animation-delay: 0.2s; }
-.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(3) { animation-delay: 0.3s; }
-.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(4) { animation-delay: 0.4s; }
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.menu-mobile-overlay.active .menu-mobile-nav li:nth-child(4) {
+    animation-delay: 0.4s;
+}
 
 /* Partículas decorativas no menu */
 .menu-mobile-particles {
@@ -541,12 +697,15 @@ header.scrolled img {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
     }
+
     10% {
         opacity: 0.3;
     }
+
     90% {
         opacity: 0.3;
     }
+
     100% {
         transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
@@ -567,7 +726,7 @@ body.menu-mobile-open {
         padding: 1rem 2rem;
         width: calc(100% - 2rem);
     }
-    
+
     header.menu-open {
         background: transparent;
         border-color: transparent;
